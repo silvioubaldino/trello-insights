@@ -1,0 +1,246 @@
+import { TrelloCard, TrelloCardLegacy, TrelloFilters, ChartData, TrelloApiCard, TrelloApiAction } from "@/types/trello";
+import { trelloDataTransformer } from "./trelloDataTransformer";
+
+// Importar mocks da API do Trello
+import cardsJsonData from "@/data/mocks/getCards.json";
+import actionsJsonData from "@/data/mocks/getActions.json";
+
+/**
+ * Serviço para gerenciar dados do Trello
+ * Processa dados da API e fornece métodos para filtragem e análise
+ */
+class TrelloDataService {
+  private transformedCards: TrelloCard[];
+
+  constructor() {
+    // Inicialmente carrega dos mocks (fallback local para dev/offline)
+    this.transformedCards = this.loadAndTransformData();
+  }
+
+  /**
+   * Carrega e transforma os dados dos mocks da API
+   */
+  private loadAndTransformData(): TrelloCard[] {
+    try {
+      const cards = cardsJsonData as unknown as TrelloApiCard[];
+      const actions = actionsJsonData as unknown as TrelloApiAction[];
+      
+      return trelloDataTransformer.transform(cards, actions);
+    } catch (error) {
+      console.error("Erro ao carregar dados do Trello:", error);
+      return [];
+    }
+  }
+
+  /**
+   * Novo fluxo: carregar dados do backend (Next API) por board.
+   * Mantém compatibilidade: retorna também no formato legado via getCards().
+   */
+  async refreshFromBackend(boardId: string): Promise<void> {
+    try {
+      const [cards, actions] = await Promise.all([
+        this.fetchCardsFromBackend(boardId),
+        this.fetchActionsFromBackend(boardId),
+      ]);
+      this.transformedCards = trelloDataTransformer.transform(cards, actions);
+    } catch (error) {
+      console.error('Erro ao buscar backend, mantendo dados locais:', error);
+    }
+  }
+
+  private async fetchCardsFromBackend(boardId: string): Promise<TrelloApiCard[]> {
+    const res = await fetch(`/api/trello/cards/${encodeURIComponent(boardId)}`, {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' },
+      // Cache de navegação padrão; pode ser ajustado com React Query
+    });
+    if (!res.ok) {
+      throw new Error(`Falha ao obter cards: ${res.status}`);
+    }
+    return res.json();
+  }
+
+  private async fetchActionsFromBackend(boardId: string): Promise<TrelloApiAction[]> {
+    const res = await fetch(`/api/trello/actions/${encodeURIComponent(boardId)}`, {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' },
+    });
+    if (!res.ok) {
+      throw new Error(`Falha ao obter actions: ${res.status}`);
+    }
+    return res.json();
+  }
+
+  /**
+   * Converte TrelloCard para o formato legado (para compatibilidade com UI existente)
+   */
+  private convertToLegacyFormat(cards: TrelloCard[]): TrelloCardLegacy[] {
+    return cards.map(card => ({
+      id: card.id,
+      name: card.name,
+      dateCreated: card.created_at,
+      dateDelivered: card.due_date || undefined,
+      member: card.members[0] || "Sem responsável", // Pega o primeiro membro
+      labels: card.labels,
+      daysOpen: card.metrics.days_open,
+    }));
+  }
+
+  /**
+   * Retorna todos os cards transformados (formato legado para compatibilidade)
+   */
+  getCards(): TrelloCardLegacy[] {
+    return this.convertToLegacyFormat(this.transformedCards);
+  }
+
+  /**
+   * Retorna os cards no formato completo com métricas
+   */
+  getTransformedCards(): TrelloCard[] {
+    return this.transformedCards;
+  }
+
+  /**
+   * Filtra cards baseado nos filtros fornecidos
+   */
+  filterCards(cards: TrelloCardLegacy[], filters: TrelloFilters): TrelloCardLegacy[] {
+    let filtered = [...cards];
+
+    if (filters.members.length > 0) {
+      filtered = filtered.filter((card) =>
+        filters.members.includes(card.member)
+      );
+    }
+
+    if (filters.labels.length > 0) {
+      filtered = filtered.filter((card) =>
+        card.labels.some((label) => filters.labels.includes(label))
+      );
+    }
+
+    if (filters.dateRange.start && filters.dateRange.end) {
+      filtered = filtered.filter((card) => {
+        if (!card.dateDelivered) return false;
+        return (
+          card.dateDelivered >= filters.dateRange.start! &&
+          card.dateDelivered <= filters.dateRange.end!
+        );
+      });
+    }
+
+    return filtered;
+  }
+
+  /**
+   * Calcula entregas agrupadas por label (cliente)
+   */
+  getDeliveriesByLabel(cards: TrelloCardLegacy[]): ChartData[] {
+    const labelCounts: Record<string, number> = {};
+
+    cards.forEach((card) => {
+      card.labels.forEach((label) => {
+        labelCounts[label] = (labelCounts[label] || 0) + 1;
+      });
+    });
+
+    return Object.entries(labelCounts).map(([name, value]) => ({
+      name,
+      value,
+    }));
+  }
+
+  /**
+   * Calcula entregas agrupadas por membro
+   */
+  getDeliveriesByMember(cards: TrelloCardLegacy[]): ChartData[] {
+    const memberCounts: Record<string, number> = {};
+
+    cards.forEach((card) => {
+      memberCounts[card.member] = (memberCounts[card.member] || 0) + 1;
+    });
+
+    return Object.entries(memberCounts).map(([name, value]) => ({
+      name,
+      value,
+    }));
+  }
+
+  /**
+   * Calcula entregas agrupadas por semana
+   */
+  getDeliveriesByWeek(cards: TrelloCardLegacy[]): ChartData[] {
+    const weekCounts: Record<string, number> = {};
+
+    cards.forEach((card) => {
+      if (!card.dateDelivered) return;
+      const weekKey = this.getWeekKey(card.dateDelivered);
+      weekCounts[weekKey] = (weekCounts[weekKey] || 0) + 1;
+    });
+
+    return Object.entries(weekCounts)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, value]) => ({
+        name,
+        value,
+      }));
+  }
+
+  /**
+   * Calcula média de dias que cards ficaram abertos por membro
+   */
+  getAverageDaysOpenByMember(cards: TrelloCardLegacy[]): ChartData[] {
+    const memberData: Record<string, { total: number; count: number }> = {};
+
+    cards.forEach((card) => {
+      if (card.daysOpen !== undefined) {
+        if (!memberData[card.member]) {
+          memberData[card.member] = { total: 0, count: 0 };
+        }
+        memberData[card.member].total += card.daysOpen;
+        memberData[card.member].count += 1;
+      }
+    });
+
+    return Object.entries(memberData).map(([name, data]) => ({
+      name,
+      value: Math.round((data.total / data.count) * 10) / 10,
+    }));
+  }
+
+  /**
+   * Retorna lista única de todos os membros
+   */
+  getAllMembers(cards: TrelloCardLegacy[]): string[] {
+    return Array.from(new Set(cards.map((card) => card.member)));
+  }
+
+  /**
+   * Retorna lista única de todas as labels (clientes)
+   */
+  getAllLabels(cards: TrelloCardLegacy[]): string[] {
+    const labels = new Set<string>();
+    cards.forEach((card) => {
+      card.labels.forEach((label) => labels.add(label));
+    });
+    return Array.from(labels);
+  }
+
+  /**
+   * Helper para obter chave da semana
+   */
+  private getWeekKey(date: Date): string {
+    const weekNumber = this.getWeekNumber(date);
+    return `Sem ${weekNumber}`;
+  }
+
+  /**
+   * Calcula o número da semana do ano
+   */
+  private getWeekNumber(date: Date): number {
+    const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+    const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+  }
+}
+
+export const trelloDataService = new TrelloDataService();

@@ -1,0 +1,409 @@
+[
+    {
+        "id": "68cb01068b00a21de5a74429",
+        "badges": {
+            "attachments": 0,
+            "fogbugz": "",
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "checkItemsEarliestDue": null,
+            "comments": 0,
+            "description": true,
+            "due": null,
+            "dueComplete": false,
+            "lastUpdatedByAi": false,
+            "start": null,
+            "externalSource": null,
+            "attachmentsByType": {
+                "trello": {
+                    "board": 0,
+                    "card": 0
+                }
+            },
+            "location": false,
+            "votes": 0,
+            "maliciousAttachments": 0,
+            "viewingMemberVoted": false,
+            "subscribed": false
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dueComplete": false,
+        "dateLastActivity": "2025-09-24T00:59:40.737Z",
+        "desc": "[https://docs.google.com/spreadsheets/d/1MKk0JCzUZhYKhAdu8AnxiFWGYYPJRWuK/edit?gid=884422924#gid=884422924](https://docs.google.com/spreadsheets/d/1MKk0JCzUZhYKhAdu8AnxiFWGYYPJRWuK/edit?gid=884422924#gid=884422924 \"smartCard-inline\")\n\n@gabrielasampaio56 essa planilha contem todas as datas comemorativas da 3CS até o final do ano. Precisamos criar conteúdos sobre isso.",
+        "descData": {
+            "emoji": {}
+        },
+        "due": null,
+        "dueReminder": null,
+        "email": null,
+        "idBoard": "659436fd99b94b5c7432e98e",
+        "idChecklists": [],
+        "idList": "659546ed167d653922a50f0b",
+        "idMembers": [
+            "65af7f6d627287ec27a6d8f0"
+        ],
+        "idMembersVoted": [],
+        "idShort": 1617,
+        "idAttachmentCover": null,
+        "labels": [
+            {
+                "id": "65953b4820a890e73f5d2c86",
+                "idBoard": "659436fd99b94b5c7432e98e",
+                "idOrganization": "63af02df2237e134967056fd",
+                "name": "3CS",
+                "nodeId": "ari:cloud:trello::label/workspace/63af02df2237e134967056fd/65953b4820a890e73f5d2c86",
+                "color": "orange",
+                "uses": 102
+            }
+        ],
+        "idLabels": [
+            "65953b4820a890e73f5d2c86"
+        ],
+        "manualCoverAttachment": true,
+        "name": "3CS | Planilha datas comemorativas",
+        "nodeId": "ari:cloud:trello::card/workspace/63af02df2237e134967056fd/68cb01068b00a21de5a74429",
+        "pinned": false,
+        "pos": 1.5555555555555554,
+        "shortLink": "eRZXT8ou",
+        "shortUrl": "https://trello.com/c/eRZXT8ou",
+        "start": null,
+        "subscribed": false,
+        "url": "https://trello.com/c/eRZXT8ou/1617-3cs-planilha-datas-comemorativas",
+        "cover": {
+            "idAttachment": null,
+            "color": "orange",
+            "idUploadedBackground": null,
+            "size": "normal",
+            "brightness": "light",
+            "idPlugin": null
+        },
+        "isTemplate": false,
+        "cardRole": null,
+        "mirrorSourceId": null
+    },
+    {
+        "id": "68b1d427bda1f8465f7438d8",
+        "badges": {
+            "attachments": 1,
+            "fogbugz": "",
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "checkItemsEarliestDue": null,
+            "comments": 1,
+            "description": true,
+            "due": "2025-09-29T20:00:00.000Z",
+            "dueComplete": true,
+            "lastUpdatedByAi": false,
+            "start": "2025-09-28T11:00:00.000Z",
+            "externalSource": null,
+            "attachmentsByType": {
+                "trello": {
+                    "board": 0,
+                    "card": 0
+                }
+            },
+            "location": false,
+            "votes": 0,
+            "maliciousAttachments": 0,
+            "viewingMemberVoted": false,
+            "subscribed": false
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dueComplete": true,
+        "dateLastActivity": "2025-10-01T21:24:46.261Z",
+        "desc": "Banner:\n\nO que faz uma profissional de CRE? E uma de Facilities?\n\nLegenda:\n\nSe você já se fez essa pergunta, vem que a gente descomplica! Embora sejam áreas que trabalham lado a lado (e muitas vezes se sobrepõem), cada uma tem seu foco principal:\n\nCorporate Real Estate (CRE) - A estratégia do ativo\n\nA profissional de CRE é como a estrategista do patrimônio imobiliário de uma empresa. Ela pensa no longo prazo!\n\nNa prática, essa profissional gerencia o portfólio de imóveis da empresa; faz a gestão de contratos de compra, venda e locação; define a estratégia de ocupação dos espaços; busca oportunidades de negócio no mercado imobiliário; e foca no valor do ativo e no retorno financeiro (ROI).\n\nFacilities Management - A operação do espaço\n\nA profissional de Facilities é como a mestra da operação do dia a dia. Ela garante que tudo funcione perfeitamente!\n\nEla gerencia serviços de limpeza, segurança, alimentação e manutenção; garante conformidade com normas de segurança e ambientais; otimiza custos operacionais e processos; cuida da experiência e bem-estar das pessoas que usam o espaço; e resolve imprevistos (de um vazamento a uma falha elétrica).\n\nE a magia acontece quando elas trabalham juntas! Dessa forma, elas garantem que o espaço físico de uma empresa seja não só um custo controlado, mas um ambiente produtivo, seguro e estratégico que impulsione o negócio.\n\n\\#mulheresemfacilities #mulheresfm #mulheresemcoporaterealestate #empoderamentofeminino #corporaterealestate #facilities",
+        "descData": {
+            "emoji": {}
+        },
+        "due": "2025-09-29T20:00:00.000Z",
+        "dueReminder": 1440,
+        "email": null,
+        "idBoard": "659436fd99b94b5c7432e98e",
+        "idChecklists": [],
+        "idList": "659546ed167d653922a50f0b",
+        "idMembers": [],
+        "idMembersVoted": [],
+        "idShort": 1488,
+        "idAttachmentCover": null,
+        "labels": [
+            {
+                "id": "65953dac5cf7cdd53b82cb5d",
+                "idBoard": "659436fd99b94b5c7432e98e",
+                "idOrganization": "63af02df2237e134967056fd",
+                "name": "MEF",
+                "nodeId": "ari:cloud:trello::label/workspace/63af02df2237e134967056fd/65953dac5cf7cdd53b82cb5d",
+                "color": "pink",
+                "uses": 233
+            }
+        ],
+        "idLabels": [
+            "65953dac5cf7cdd53b82cb5d"
+        ],
+        "manualCoverAttachment": true,
+        "name": "MEF | POST 6_SETEMBRO",
+        "nodeId": "ari:cloud:trello::card/workspace/63af02df2237e134967056fd/68b1d427bda1f8465f7438d8",
+        "pinned": false,
+        "pos": 2.333333333333333,
+        "shortLink": "Ur6Xrhsg",
+        "shortUrl": "https://trello.com/c/Ur6Xrhsg",
+        "start": "2025-09-28T11:00:00.000Z",
+        "subscribed": false,
+        "url": "https://trello.com/c/Ur6Xrhsg/1488-mef-post-6setembro",
+        "cover": {
+            "idAttachment": null,
+            "color": null,
+            "idUploadedBackground": null,
+            "size": "normal",
+            "brightness": "dark",
+            "idPlugin": null
+        },
+        "isTemplate": false,
+        "cardRole": null,
+        "mirrorSourceId": null
+    },
+    {
+        "id": "68d2f990a756a3b963cd65a0",
+        "badges": {
+            "attachments": 0,
+            "fogbugz": "",
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "checkItemsEarliestDue": null,
+            "comments": 0,
+            "description": true,
+            "due": null,
+            "dueComplete": false,
+            "lastUpdatedByAi": false,
+            "start": null,
+            "externalSource": null,
+            "attachmentsByType": {
+                "trello": {
+                    "board": 0,
+                    "card": 0
+                }
+            },
+            "location": false,
+            "votes": 0,
+            "maliciousAttachments": 0,
+            "viewingMemberVoted": false,
+            "subscribed": false
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dueComplete": false,
+        "dateLastActivity": "2025-10-02T12:45:33.041Z",
+        "desc": "Banner:\n\n19 de outubro - Dia do Profissional de TI\nTecnologia que impulsiona nossa operação\n\nLegenda:\n\nHoje é dia dos profissionais de Tecnologia da Informação, verdadeiros pilares da inovação e eficiência em nossa operação. São eles que garantem a conectividade, a segurança digital e o perfeito funcionamento dos sistemas que sustentam nossos serviços.\n\nDiariamente, esses especialistas demonstram expertise ao gerenciar redes complexas, proteger dados críticos e desenvolver soluções tecnológicas que otimizam nossos processos. Seu trabalho essencial permite que nossas equipes atuem com precisão e agilidade em todos os projetos.\n\nAos profissionais de TI da Temon Serviços, nosso reconhecimento pela dedicação em manter nossa infraestrutura tecnológica sempre atualizada, segura e alinhada com as melhores práticas do mercado.\n\n\\#temonserviços #temon #manutençãopredial #tecnologiadainformação",
+        "descData": {
+            "emoji": {}
+        },
+        "due": null,
+        "dueReminder": -1,
+        "email": null,
+        "idBoard": "659436fd99b94b5c7432e98e",
+        "idChecklists": [],
+        "idList": "659546ed167d653922a50f0b",
+        "idMembers": [],
+        "idMembersVoted": [],
+        "idShort": 1692,
+        "idAttachmentCover": null,
+        "labels": [
+            {
+                "id": "65953b29d187bf7868f27b04",
+                "idBoard": "659436fd99b94b5c7432e98e",
+                "idOrganization": "63af02df2237e134967056fd",
+                "name": "TES",
+                "nodeId": "ari:cloud:trello::label/workspace/63af02df2237e134967056fd/65953b29d187bf7868f27b04",
+                "color": "black_dark",
+                "uses": 282
+            }
+        ],
+        "idLabels": [
+            "65953b29d187bf7868f27b04"
+        ],
+        "manualCoverAttachment": false,
+        "name": "TES | DIA DO PROFISSIONAL DE TI",
+        "nodeId": "ari:cloud:trello::card/workspace/63af02df2237e134967056fd/68d2f990a756a3b963cd65a0",
+        "pinned": false,
+        "pos": 2.722222222222222,
+        "shortLink": "DJthqMuP",
+        "shortUrl": "https://trello.com/c/DJthqMuP",
+        "start": null,
+        "subscribed": false,
+        "url": "https://trello.com/c/DJthqMuP/1692-tes-dia-do-profissional-de-ti",
+        "cover": {
+            "idAttachment": null,
+            "color": null,
+            "idUploadedBackground": null,
+            "size": "normal",
+            "brightness": "dark",
+            "idPlugin": null
+        },
+        "isTemplate": false,
+        "cardRole": null,
+        "mirrorSourceId": null
+    },
+    {
+        "id": "68814f2849e1d845ece30b3f",
+        "badges": {
+            "attachments": 17,
+            "fogbugz": "",
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "checkItemsEarliestDue": null,
+            "comments": 14,
+            "description": true,
+            "due": null,
+            "dueComplete": false,
+            "lastUpdatedByAi": false,
+            "start": null,
+            "externalSource": null,
+            "attachmentsByType": {
+                "trello": {
+                    "board": 0,
+                    "card": 0
+                }
+            },
+            "location": false,
+            "votes": 0,
+            "maliciousAttachments": 0,
+            "viewingMemberVoted": false,
+            "subscribed": true
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dueComplete": false,
+        "dateLastActivity": "2025-09-29T15:21:22.073Z",
+        "desc": "@lucasdemelo99\nOie, segue conteúdo de agosto:\n[https://docs.google.com/document/d/1H2PCe63oeYOJ9dmE7xcHM6rKN6tZ1HS6BzKDIneSuVA/edit?tab=t.0](https://docs.google.com/document/d/1H2PCe63oeYOJ9dmE7xcHM6rKN6tZ1HS6BzKDIneSuVA/edit?tab=t.0 \"smartCard-inline\")",
+        "descData": {
+            "emoji": {}
+        },
+        "due": null,
+        "dueReminder": -1,
+        "email": null,
+        "idBoard": "659436fd99b94b5c7432e98e",
+        "idChecklists": [],
+        "idList": "659546ed167d653922a50f0b",
+        "idMembers": [],
+        "idMembersVoted": [],
+        "idShort": 1229,
+        "idAttachmentCover": "68a632d4c4e13ac0461369ca",
+        "labels": [
+            {
+                "id": "65953b29d187bf7868f27b04",
+                "idBoard": "659436fd99b94b5c7432e98e",
+                "idOrganization": "63af02df2237e134967056fd",
+                "name": "TES",
+                "nodeId": "ari:cloud:trello::label/workspace/63af02df2237e134967056fd/65953b29d187bf7868f27b04",
+                "color": "black_dark",
+                "uses": 282
+            }
+        ],
+        "idLabels": [
+            "65953b29d187bf7868f27b04"
+        ],
+        "manualCoverAttachment": false,
+        "name": "TES | SM - Outubro",
+        "nodeId": "ari:cloud:trello::card/workspace/63af02df2237e134967056fd/68814f2849e1d845ece30b3f",
+        "pinned": false,
+        "pos": 3.1111111111111107,
+        "shortLink": "T28TZQN9",
+        "shortUrl": "https://trello.com/c/T28TZQN9",
+        "start": null,
+        "subscribed": true,
+        "url": "https://trello.com/c/T28TZQN9/1229-tes-sm-outubro",
+        "cover": {
+            "idAttachment": "68a632d4c4e13ac0461369ca",
+            "color": null,
+            "idUploadedBackground": null,
+            "size": "normal",
+            "brightness": "dark",
+            "idPlugin": null
+        },
+        "isTemplate": false,
+        "cardRole": null,
+        "mirrorSourceId": null
+    },
+    {
+        "id": "68dac940878eb4278adc5a5c",
+        "badges": {
+            "attachments": 1,
+            "fogbugz": "",
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "checkItemsEarliestDue": null,
+            "comments": 1,
+            "description": true,
+            "due": null,
+            "dueComplete": false,
+            "lastUpdatedByAi": false,
+            "start": null,
+            "externalSource": null,
+            "attachmentsByType": {
+                "trello": {
+                    "board": 0,
+                    "card": 0
+                }
+            },
+            "location": false,
+            "votes": 0,
+            "maliciousAttachments": 0,
+            "viewingMemberVoted": false,
+            "subscribed": false
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dueComplete": false,
+        "dateLastActivity": "2025-10-02T22:44:47.899Z",
+        "desc": "Banner:\n\n04 de outubro - Dia da Natureza\nA natureza é nosso maior ativo. Preservar é garantir um futuro sustentável para todos\n\nLegenda:\n\nCada recurso natural faz parte de um ciclo essencial para o planeta. Na CML, enxergamos nossa responsabilidade nesse sistema e buscamos otimizar nossas operações para minimizar impactos, promovendo eficiência energética e práticas sustentáveis em nossa rotina.\n\nAcreditamos que uma logística inteligente é aquela que entrega resultados com agilidade e respeito ao meio ambiente. Afinal, cuidar da natureza hoje é assegurar um amanhã mais verde e próspero para as próximas gerações.\n\n\\#cml #hospitalar #saúde #logística #armazenamento #transporte #diadanatureza",
+        "descData": {
+            "emoji": {}
+        },
+        "due": null,
+        "dueReminder": -1,
+        "email": null,
+        "idBoard": "659436fd99b94b5c7432e98e",
+        "idChecklists": [],
+        "idList": "659546ed167d653922a50f0b",
+        "idMembers": [],
+        "idMembersVoted": [],
+        "idShort": 1755,
+        "idAttachmentCover": null,
+        "labels": [
+            {
+                "id": "65953c4301adce5e8a7c3c12",
+                "idBoard": "659436fd99b94b5c7432e98e",
+                "idOrganization": "63af02df2237e134967056fd",
+                "name": "CML",
+                "nodeId": "ari:cloud:trello::label/workspace/63af02df2237e134967056fd/65953c4301adce5e8a7c3c12",
+                "color": "sky_dark",
+                "uses": 120
+            }
+        ],
+        "idLabels": [
+            "65953c4301adce5e8a7c3c12"
+        ],
+        "manualCoverAttachment": true,
+        "name": "CML | DIA DA NATUREZA",
+        "nodeId": "ari:cloud:trello::card/workspace/63af02df2237e134967056fd/68dac940878eb4278adc5a5c",
+        "pinned": false,
+        "pos": 3.8888888888888884,
+        "shortLink": "Nsnpe3s2",
+        "shortUrl": "https://trello.com/c/Nsnpe3s2",
+        "start": null,
+        "subscribed": false,
+        "url": "https://trello.com/c/Nsnpe3s2/1755-cml-dia-da-natureza",
+        "cover": {
+            "idAttachment": null,
+            "color": null,
+            "idUploadedBackground": null,
+            "size": "normal",
+            "brightness": "dark",
+            "idPlugin": null
+        },
+        "isTemplate": false,
+        "cardRole": null,
+        "mirrorSourceId": null
+    }
+]

@@ -1,0 +1,1728 @@
+[
+    {
+        "id": "68d340f29479bf27ecb97d03",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "68c4762ce0a2e59d45cc9e99"
+            },
+            "card": {
+                "idList": "659546ed167d653922a50f0b",
+                "id": "68cb01068b00a21de5a74429",
+                "name": "3CS | Planilha datas comemorativas",
+                "idShort": 1617,
+                "shortLink": "eRZXT8ou"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "68c4762ce0a2e59d45cc9e99",
+                "name": "REFINAMENTO ( DRY + GABI)"
+            },
+            "listAfter": {
+                "id": "659546ed167d653922a50f0b",
+                "name": "ARQUIVOS"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-24T00:53:06.440Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68dd9c13ea922c5112cf1043",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "6765778d01b43788b33ab2fe"
+            },
+            "card": {
+                "idList": "659546ed167d653922a50f0b",
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6765778d01b43788b33ab2fe",
+                "name": "ENVIADO PARA O CLIENTE"
+            },
+            "listAfter": {
+                "id": "659546ed167d653922a50f0b",
+                "name": "ARQUIVOS"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-10-01T21:24:35.379Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68dd66f475a85e7d1fe69014",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "6612e745118b98e431b9cd26"
+            },
+            "card": {
+                "idList": "6765778d01b43788b33ab2fe",
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6612e745118b98e431b9cd26",
+                "name": "ENVIAR PARA O CLIENTE"
+            },
+            "listAfter": {
+                "id": "6765778d01b43788b33ab2fe",
+                "name": "ENVIADO PARA O CLIENTE"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-10-01T17:37:56.431Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68da76da23d4683b80089af0",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "6594378ce0471d184b72af72"
+            },
+            "card": {
+                "idList": "6612e745118b98e431b9cd26",
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            },
+            "listAfter": {
+                "id": "6612e745118b98e431b9cd26",
+                "name": "ENVIAR PARA O CLIENTE"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-29T12:08:58.285Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68da6fbb4df8023fc24fea65",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65943785d0c3c527b96bd7a5"
+            },
+            "card": {
+                "idList": "6594378ce0471d184b72af72",
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            },
+            "listAfter": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-29T11:38:35.465Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "68da6fb87dce38f626baf264",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "idCard": "68b1d427bda1f8465f7438d8",
+            "text": "Em anexo\n\n![Arte\\_Mulheres.png](https://trello.com/1/cards/68b1d427bda1f8465f7438d8/attachments/68da6facf1ec943b61c2219d/download/Arte_Mulheres.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-09-29T11:38:32.418Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "68d6f46719a7f2f24cc1cc35",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65943780f1ffd6c5d4e136bc"
+            },
+            "card": {
+                "idList": "65943785d0c3c527b96bd7a5",
+                "id": "68b1d427bda1f8465f7438d8",
+                "name": "MEF | POST 6_SETEMBRO",
+                "idShort": 1488,
+                "shortLink": "Ur6Xrhsg"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BACKLOG"
+            },
+            "listAfter": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-26T20:15:35.463Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "68de73ecc5aed61f3f61091e",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "65943780f1ffd6c5d4e136bc"
+            },
+            "card": {
+                "idList": "659546ed167d653922a50f0b",
+                "id": "68d2f990a756a3b963cd65a0",
+                "name": "TES | DIA DO PROFISSIONAL DE TI",
+                "idShort": 1692,
+                "shortLink": "DJthqMuP"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BACKLOG"
+            },
+            "listAfter": {
+                "id": "659546ed167d653922a50f0b",
+                "name": "ARQUIVOS"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-10-02T12:45:32.948Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68d315ccb0e6551e73749b0f",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "68a4b4855c224633825aaf80"
+            },
+            "card": {
+                "idList": "65943780f1ffd6c5d4e136bc",
+                "id": "68d2f990a756a3b963cd65a0",
+                "name": "TES | DIA DO PROFISSIONAL DE TI",
+                "idShort": 1692,
+                "shortLink": "DJthqMuP"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "68a4b4855c224633825aaf80",
+                "name": "A FAZER DA SEMANA"
+            },
+            "listAfter": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BACKLOG"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-23T21:49:00.899Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68d340828e94645832b079a9",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "68c4762ce0a2e59d45cc9e99"
+            },
+            "card": {
+                "idList": "659546ed167d653922a50f0b",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "68c4762ce0a2e59d45cc9e99",
+                "name": "REFINAMENTO ( DRY + GABI)"
+            },
+            "listAfter": {
+                "id": "659546ed167d653922a50f0b",
+                "name": "ARQUIVOS"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-24T00:51:14.848Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68d15d7f7c8db95afd64e988",
+        "idMemberCreator": "65af7f6d627287ec27a6d8f0",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@adriellyubaldino tirando as datas comemorativas, nenhuma dessas postagens foi feita?",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "68c4762ce0a2e59d45cc9e99",
+                "name": "REFINAMENTO ( DRY + GABI)"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-09-22T14:30:23.719Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "65af7f6d627287ec27a6d8f0",
+            "activityBlocked": false,
+            "avatarHash": "2a50dd65b91fda8a03bcf28647692d9a",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/65af7f6d627287ec27a6d8f0/2a50dd65b91fda8a03bcf28647692d9a",
+            "fullName": "Gabriela Sampaio",
+            "idMemberReferrer": null,
+            "initials": "GS",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "gabrielasampaio56"
+        }
+    },
+    {
+        "id": "68c82b1f2dd3784c4997dca7",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@gabrielasampaio56 desmembrar",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "68c4762ce0a2e59d45cc9e99",
+                "name": "REFINAMENTO ( DRY + GABI)"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-09-15T15:05:03.613Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68c829733162ababe2622c50",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "65943780f1ffd6c5d4e136bc"
+            },
+            "card": {
+                "idList": "68c4762ce0a2e59d45cc9e99",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BACKLOG"
+            },
+            "listAfter": {
+                "id": "68c4762ce0a2e59d45cc9e99",
+                "name": "REFINAMENTO ( DRY + GABI)"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-09-15T14:57:55.099Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68ae1cdec112c25f7658726b",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "65945c77ad36d2af3c9b0cdc"
+            },
+            "card": {
+                "idList": "65943780f1ffd6c5d4e136bc",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            },
+            "listAfter": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BACKLOG"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-26T20:45:18.064Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68ae1ccd68ea9242327ddb46",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@lucasdemelo99 como temos muitos post com eles, vamos deixar essa demanda para outubro",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Outubro",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-26T20:45:01.673Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68addf10d349b7859d3e1489",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "old": {
+                "idList": "6594378ce0471d184b72af72"
+            },
+            "card": {
+                "idList": "65945c77ad36d2af3c9b0cdc",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            },
+            "listAfter": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-26T16:21:36.276Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68ad399f95d10e6df54c739e",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "68a4b4855c224633825aaf80"
+            },
+            "card": {
+                "idList": "6594378ce0471d184b72af72",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "68a4b4855c224633825aaf80",
+                "name": "A FAZER DA SEMANA"
+            },
+            "listAfter": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-26T04:35:43.956Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "68a778b8d46229e5dac43fa9",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65945c77ad36d2af3c9b0cdc"
+            },
+            "card": {
+                "idList": "68a4b4855c224633825aaf80",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            },
+            "listAfter": {
+                "id": "68a4b4855c224633825aaf80",
+                "name": "A FAZER DA SEMANA"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-21T19:51:20.844Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "68a63ffd6b17611f08b60295",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "![image.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/68a63fcd93d5a2954717a958/download/image.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-20T21:37:01.051Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68a63ee00aa8fdf76954d4f9",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "achei essa no acervo de imagens deles",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-20T21:32:16.059Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68a639a9df2ccf989eb40cb9",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@lucasdemelo99 eu usaria uma dessas para o post de segurança e tecnologia.",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-20T21:10:01.721Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68a6399349a42a4b52129e1a",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "![image.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/68a6398eccd45d7487104d40/download/image.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-20T21:09:39.537Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "68a636134c6df93353a2e797",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "![image.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/68a6360fa655848995445c66/download/image.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-20T20:54:43.997Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "689d58670800e43b56ba9e00",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "Segue a outra pessoal! Só aguardando pra ver se tem aquelas fotos do Sistemon.\n\n\n![21\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689d57f38fc5e3f338b9b87b/download/21_08.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-14T03:30:47.329Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "689c0321d627a3bf6da78f9f",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "6594378ce0471d184b72af72"
+            },
+            "card": {
+                "idList": "65945c77ad36d2af3c9b0cdc",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            },
+            "listAfter": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-13T03:14:41.728Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "689c031f01e6756df4cdd01d",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65945c77ad36d2af3c9b0cdc"
+            },
+            "card": {
+                "idList": "6594378ce0471d184b72af72",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            },
+            "listAfter": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-13T03:14:39.163Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "689c02ff75b9e4cd9b53e8c5",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "Oi pessoal. Só consegui ajustar 1. O freepik está com o serv de IA zuado agora e não consigo gerar as imagens. Também não consegui achar nada legal em acervo.\n\nMas finalizo hoje ainda assim que voltar\n\nBBL e Mulheres já foram as datas mais emergentes, consigo entregar até sexta tudo, pode ser? Se tiver mais algum emergente dos dois eu já mato logo mas zerar o docs eu consigo só na sexta, tudo bem? Se tiver emergencia eu tento correr aqui com minha memória rs\n\n\n\n![19\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689c029c8c6ece6a4a7ffefc/download/19_08.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-13T03:14:07.839Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "689bdd58336e4fd7e9e6ce66",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@lucasdemelo99 ta vendo como eu tenho MUITO que aprender com o @bpiesco … eu achando tudo lindo, mas a gente precisa conhecer melhor esses clientes",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-13T00:33:28.854Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "689b7451e78a6036b5968254",
+        "idMemberCreator": "591d1a2a45b0440ae88f216f",
+        "data": {
+            "old": {
+                "idList": "6594378ce0471d184b72af72"
+            },
+            "card": {
+                "idList": "65945c77ad36d2af3c9b0cdc",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            },
+            "listAfter": {
+                "id": "65945c77ad36d2af3c9b0cdc",
+                "name": "AJUSTES"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-12T17:05:21.448Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "591d1a2a45b0440ae88f216f",
+            "activityBlocked": false,
+            "avatarHash": "fb8d83f246ac516a1f1a2dd342f4aa10",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/591d1a2a45b0440ae88f216f/fb8d83f246ac516a1f1a2dd342f4aa10",
+            "fullName": "Bruno Piesco",
+            "idMemberReferrer": null,
+            "initials": "BP",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "bpiesco"
+        }
+    },
+    {
+        "id": "689b743b0a93bb9ad4d7a571",
+        "idMemberCreator": "591d1a2a45b0440ae88f216f",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "Vamos lá! @adriellyubaldino e @lucasdemelo99 Minhas observações:\n\nCombate a fumo: o Andrey fez, né? Talvez possa ser usado para Cotia. Mas a barra transversal precisa se sobrepor ao cigarrinho.\n\nTecnologia e segurança - Foto de obra e coturno, nada a ver com a Temon Serviços. Sugiro colocar algo mais tecnológico.\n\nTerceirização - tirar o colete laranja.\n\nAlta complexidade - a foto não é a ideal, porque não representa complexidade, mas tá valendo. Vamos enviar e ver no que dá. Mas baita foto!!!!\n\nInverno - Ok\n\nManutenção em dia - Ok.\n\nFotos do Sistemon. Talvez o @leonardooliveira118  possa ajudar.",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            },
+            "dateLastEdited": "2025-08-12T17:05:13.444Z"
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-12T17:04:59.321Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "591d1a2a45b0440ae88f216f",
+            "activityBlocked": false,
+            "avatarHash": "fb8d83f246ac516a1f1a2dd342f4aa10",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/591d1a2a45b0440ae88f216f/fb8d83f246ac516a1f1a2dd342f4aa10",
+            "fullName": "Bruno Piesco",
+            "idMemberReferrer": null,
+            "initials": "BP",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "bpiesco"
+        }
+    },
+    {
+        "id": "689b589fd935395008d7c4ba",
+        "idMemberCreator": "683ac1b75de87824746d4fab",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "@lucasdemelo99 eu amei todas <3",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-12T15:07:11.229Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "683ac1b75de87824746d4fab",
+            "activityBlocked": false,
+            "avatarHash": "a529950ae6daacf24da2ce8b62dbbf3d",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/683ac1b75de87824746d4fab/a529950ae6daacf24da2ce8b62dbbf3d",
+            "fullName": "Adrielly Ubaldino",
+            "idMemberReferrer": null,
+            "initials": "AU",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "adriellyubaldino"
+        }
+    },
+    {
+        "id": "689ace15a9ad37e54b64d457",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "idCard": "68814f2849e1d845ece30b3f",
+            "text": "Oi pessoal! Fico no aguardo do feedback. Segue também o projeto no drive pois estava muito grande\n\n[https://drive.google.com/drive/u/0/folders/1yX9oFRrIL1vOn91_7XF4v-o_4tDIddun](https://drive.google.com/drive/u/0/folders/1yX9oFRrIL1vOn91_7XF4v-o_4tDIddun \"smartCard-inline\")\n\n@bpiesco @leonardooliveira118 por acaso voces possuem aquelas fotos do Sistemon? @adriellyubaldino , faltou só o Sistemon mas to vendo se os meninos possuem as fotos.\n\n![29\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb111239b82d56499460/download/29_08.png)\n\n![21\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb31ec9029bdc562c48e/download/21_08.png)\n\n![19\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb2beb7774b75c319528/download/19_08.png)\n\n![01\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb21ccc54466d215cfb8/download/01_08.png)\n\n![Artboard\\_1.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb1b4e8e3b531b6b690f/download/Artboard_1.png)\n\n![26\\_08.png](https://trello.com/1/cards/68814f2849e1d845ece30b3f/attachments/689acb16b8fcf107ac99ea81/download/26_08.png)",
+            "textData": {
+                "emoji": {}
+            },
+            "card": {
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "list": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "commentCard",
+        "date": "2025-08-12T05:16:05.094Z",
+        "limits": {
+            "reactions": {
+                "perAction": {
+                    "status": "ok",
+                    "disableAt": 900,
+                    "warnAt": 720
+                },
+                "uniquePerAction": {
+                    "status": "ok",
+                    "disableAt": 17,
+                    "warnAt": 14
+                }
+            }
+        },
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "689acace5582ac1274b7550f",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65943785d0c3c527b96bd7a5"
+            },
+            "card": {
+                "idList": "6594378ce0471d184b72af72",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            },
+            "listAfter": {
+                "id": "6594378ce0471d184b72af72",
+                "name": "REVISÃO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-12T05:02:06.930Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "6899e222ce92015edad9507f",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65943780f1ffd6c5d4e136bc"
+            },
+            "card": {
+                "idList": "65943785d0c3c527b96bd7a5",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BRIEFING"
+            },
+            "listAfter": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-08-11T12:29:22.783Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    },
+    {
+        "id": "6887dd02069aab6a9300d6b2",
+        "idMemberCreator": "62ed4e354416df85f783512c",
+        "data": {
+            "old": {
+                "idList": "65943785d0c3c527b96bd7a5"
+            },
+            "card": {
+                "idList": "65943780f1ffd6c5d4e136bc",
+                "id": "68814f2849e1d845ece30b3f",
+                "name": "TES | SM - Agosto",
+                "idShort": 1229,
+                "shortLink": "T28TZQN9"
+            },
+            "board": {
+                "id": "659436fd99b94b5c7432e98e",
+                "name": "MAN | OPERAÇÃO",
+                "shortLink": "EVp6ph07"
+            },
+            "listBefore": {
+                "id": "65943785d0c3c527b96bd7a5",
+                "name": "DESENVOLVIMENTO"
+            },
+            "listAfter": {
+                "id": "65943780f1ffd6c5d4e136bc",
+                "name": "BRIEFING"
+            }
+        },
+        "appCreator": null,
+        "type": "updateCard",
+        "date": "2025-07-28T20:26:42.376Z",
+        "limits": null,
+        "memberCreator": {
+            "id": "62ed4e354416df85f783512c",
+            "activityBlocked": false,
+            "avatarHash": "558520a2f268c014183b02c23d8cb1b5",
+            "avatarUrl": "https://trello-members.s3.amazonaws.com/62ed4e354416df85f783512c/558520a2f268c014183b02c23d8cb1b5",
+            "fullName": "Lucas de Melo",
+            "idMemberReferrer": null,
+            "initials": "LM",
+            "nonPublic": {},
+            "nonPublicAvailable": true,
+            "username": "lucasdemelo99"
+        }
+    }
+]

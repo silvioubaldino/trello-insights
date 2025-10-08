@@ -1,0 +1,68 @@
+---
+alwaysApply: true
+---
+
+### Visão geral do sistema
+
+Aplicação web de analytics sobre dados do Trello, construída em React + Vite + TypeScript, com UI via shadcn-ui/Tailwind e gráficos via Recharts. Consome dados mockados de cards e actions da API do Trello, transforma em um modelo interno com métricas, aplica filtros (membros, labels, período) e apresenta KPIs e gráficos agregados.
+
+### Objetivo principal
+
+Fornecer uma visão rápida e filtrável de entregas (cards concluídos), produtividade e retrabalho (rejeições internas e do cliente) a partir do fluxo de listas do quadro Trello.
+
+### Regras de negócio
+
+- **Transformação de dados**:
+  - **created_at**: primeira ação `createCard`; fallback para a ação mais antiga quando ausente.
+  - **due_date**: se `card.due` existe, usar; se `card.closed` é true, usar `dateLastActivity`; caso contrário, `null`.
+  - **labels**: mapeadas para array de nomes de labels.
+  - **members**: usa `idMembers` diretamente (IDs; a UI “legada” usa o primeiro como `member`).
+  - **days_open**: dias entre `created_at` e `due_date` (ou hoje, se sem `due_date`), arredondado para cima.
+- **Métricas de rejeição (por movimentos)**:
+  - **Interna**: mover de `REVISÃO` para qualquer lista que não seja `ENVIADO PARA O CLIENTE` ou `ENVIAR PARA O CLIENTE`.
+  - **Cliente**: mover de `ENVIADO PARA O CLIENTE` para `AJUSTE`, `DESENVOLVIMENTO` ou `REVISÃO`.
+  - Listas relevantes (nomes): `REVISÃO`, `ENVIADO PARA O CLIENTE`, `ENVIAR PARA O CLIENTE`, `AJUSTE`, `DESENVOLVIMENTO`.
+- **Filtros (formato legado `TrelloCardLegacy`)**:
+  - Por membros: inclui se `member` do card está em `filters.members`.
+  - Por labels: inclui se alguma label do card está em `filters.labels`.
+  - Por período: inclui se `dateDelivered` existe e está no intervalo `[start, end]`.
+- **Agregações**:
+  - Entregas por label (cliente): contagem de cards por nome da label.
+  - Entregas por membro: contagem de cards por `member`.
+  - Entregas por semana: contagem por chave `Sem {n}` a partir de `dateDelivered` (semana do ano, não ISO).
+  - Média de dias em aberto por membro: média de `daysOpen` por `member`.
+
+### Estrutura das entidades e relacionamentos
+
+- **TrelloApiCard (mock)** → mapeado para **TrelloCard (interno)**
+  - Relevante: `id`, `name`, `idMembers` (ids), `labels[]` (nome/cor), `closed`, `due`, `dateLastActivity`.
+- **TrelloApiAction (mock)** → base para `created_at`, movimentos entre listas e métricas de rejeição.
+- **TrelloCard (interno)**
+  - `id`, `name`, `labels: string[]`, `members: string[]`, `created_at: Date`, `due_date: Date | null`, `closed: boolean`, `metrics: { internal_rejected_number, client_rejected_number, days_open }`.
+- **TrelloCardLegacy (compat UI)**
+  - `id`, `name`, `dateCreated`, `dateDelivered?`, `member: string`, `labels: string[]`, `daysOpen?`.
+  - Observação: `member` é o primeiro de `members`, com fallback “Sem responsável”.
+- **TrelloFilters**
+  - `members: string[]`, `labels: string[]`, `dateRange: { start: Date | null, end: Date | null }`.
+
+### Fluxos principais
+
+- **Boot**: `main.tsx` monta `App` com React Router e React Query. Rota `/` carrega `Index`.
+- **Carregamento de dados**: `TrelloDataService` lê `getCards.json` e `getActions.json` e usa `trelloDataTransformer.transform(cards, actions)` para produzir `TrelloCard[]` em memória.
+- **Adaptação para UI**: `getCards()` converte `TrelloCard[]` em `TrelloCardLegacy[]` para compatibilidade com componentes atuais.
+- **Filtros**: `FilterProvider` mantém `TrelloFilters`; `FilterSidebar` permite seleção de membros, labels e período e atualiza o contexto.
+- **Dashboards/KPIs** (`Index`):
+  - Total de cards filtrados.
+  - Média geral de `daysOpen`.
+  - Quantidade de membros únicos.
+- **Gráficos** (Recharts):
+  - `PieChartCard`: Entregas por Cliente (labels).
+  - `BarChartCard`: Entregas por Pessoa; Média de Dias em Aberto por Membro.
+  - `LineChartCard`: Entregas por Semana.
+
+### Dependências externas
+
+- Runtime/UI: React, React Router, shadcn-ui (Radix + Tailwind), Recharts, date-fns.
+- Estado/infra: @tanstack/react-query (configurado; sem fetch real).
+- Utilitários: clsx, tailwind-merge.
+- Build/tooling: Vite, TypeScript, ESLint, Tailwind.
