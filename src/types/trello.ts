@@ -4,6 +4,11 @@ export interface TrelloApiCard {
   name: string;
   idList: string;
   idMembers: string[];
+  members?: Array<{
+    id: string;
+    fullName: string;
+    username: string;
+  }>;
   labels: Array<{
     id: string;
     name: string;

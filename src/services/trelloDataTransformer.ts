@@ -17,9 +17,54 @@ export class TrelloDataTransformer {
   };
 
   /**
+   * Mapeamento de ID de membro para nome completo
+   */
+  private memberIdToNameMap: Map<string, string> = new Map();
+
+  /**
+   * Constrói o mapeamento de IDs de membros para nomes
+   */
+  private buildMemberMap(actions: TrelloApiAction[]): void {
+    this.memberIdToNameMap.clear();
+    
+    actions.forEach((action) => {
+      if (action.memberCreator) {
+        const { id, fullName } = action.memberCreator;
+        if (id && fullName && !this.memberIdToNameMap.has(id)) {
+          this.memberIdToNameMap.set(id, fullName);
+        }
+      }
+    });
+  }
+
+  /**
+   * Obtém os nomes dos membros do card
+   * Usa o campo members do card se disponível (quando &members=true na API),
+   * senão faz fallback para mapeamento por ID usando as actions
+   */
+  private getMemberNames(card: TrelloApiCard): string[] {
+    // Se o card tem o campo members (quando &members=true na API), usar diretamente
+    if (card.members && card.members.length > 0) {
+      return card.members.map(m => m.fullName);
+    }
+
+    // Fallback: usar mapeamento de IDs construído das actions
+    if (card.idMembers && card.idMembers.length > 0) {
+      return card.idMembers
+        .map(id => this.memberIdToNameMap.get(id) || id)
+        .filter(name => name !== undefined);
+    }
+
+    return [];
+  }
+
+  /**
    * Transforma os dados brutos da API em cards com métricas calculadas
    */
   transform(cards: TrelloApiCard[], actions: TrelloApiAction[]): TrelloCard[] {
+    // Primeiro, construir o mapeamento de membros
+    this.buildMemberMap(actions);
+    
     return cards.map((card) => this.transformCard(card, actions));
   }
 
@@ -37,7 +82,7 @@ export class TrelloDataTransformer {
       id: card.id,
       name: card.name,
       labels: card.labels.map((label) => label.name),
-      members: card.idMembers,
+      members: this.getMemberNames(card),
       created_at,
       due_date,
       closed: card.closed,
