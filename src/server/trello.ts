@@ -61,14 +61,12 @@ export const getCardsByBoard = cache(async (boardId: string): Promise<TrelloApiC
 
 export const getActionsByBoard = cache(async (boardId: string): Promise<TrelloApiAction[]> => {
   console.log(`\n[getActionsByBoard] Fetching actions for board: ${boardId}`);
-  // Define data de início como 01/01/2025
   const since = '2025-01-01';
-  // Filtra apenas ações de criação e movimentação de cards
-  const filter = 'createCard,updateCard';
-  const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/actions?since=${since}&filter=${filter}&${getAuthQuery()}`;
+  const filter = 'updateCard:idList';
+  const fields = 'id,date,data';
+
+  const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/actions?since=${since}&filter=${filter}&fields=${fields}&memberCreator=true&memberCreator_fields=id,fullName&limit=1000&${getAuthQuery()}`;
   const result = await fetchJson<TrelloApiAction[]>(url);
-  console.log(`[getActionsByBoard] Returned ${result.length} actions\n`);
+  console.log(`[getActionsByBoard] Returned ${result.length} actions (filtered: createCard + list movements)\n`);
   return result;
 });
-
-

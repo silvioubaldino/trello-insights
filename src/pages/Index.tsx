@@ -7,6 +7,7 @@ import { PieChartCard } from "@/components/dashboard/charts/PieChartCard";
 import { BarChartCard } from "@/components/dashboard/charts/BarChartCard";
 import { LineChartCard } from "@/components/dashboard/charts/LineChartCard";
 import { CounterCard } from "@/components/dashboard/charts/CounterCard";
+import { StackedBarChartCard } from "@/components/dashboard/charts/StackedBarChartCard";
 import { trelloDataService } from "@/services/trelloDataService";
 import { Layers, TrendingUp, Loader2 } from "lucide-react";
 
@@ -43,6 +44,7 @@ const DashboardContent = () => {
   const deliveriesByMember = trelloDataService.getDeliveriesByMember(filteredCards);
   const deliveriesByWeek = trelloDataService.getDeliveriesByWeek(filteredCards);
   const avgDaysOpenByMember = trelloDataService.getAverageDaysOpenByMember(filteredCards);
+  const rejectionsByMember = trelloDataService.getRejectionsByMember(filteredCards);
 
   const totalCards = filteredCards.length;
   const avgDaysOpen =
@@ -112,6 +114,23 @@ const DashboardContent = () => {
               <BarChartCard
                 title="Média de Dias em Aberto por Membro"
                 data={avgDaysOpenByMember}
+              />
+              
+              <StackedBarChartCard
+                title="Rejeições por Membro"
+                data={rejectionsByMember}
+                bars={[
+                  {
+                    dataKey: "Rejeições Internas",
+                    fill: "hsl(var(--chart-1))",
+                    name: "Rejeições Internas"
+                  },
+                  {
+                    dataKey: "Rejeições do Cliente",
+                    fill: "hsl(var(--chart-2))",
+                    name: "Rejeições do Cliente"
+                  }
+                ]}
               />
             </div>
             </div>

@@ -12,7 +12,7 @@ export class TrelloDataTransformer {
   private readonly LIST_NAMES = {
     REVISAO: "REVISÃO",
     ENVIADO_CLIENTE: "ENVIADO PARA O CLIENTE",
-    AJUSTE: "AJUSTE",
+    AJUSTE: "AJUSTES",
     DESENVOLVIMENTO: "DESENVOLVIMENTO",
   };
 
@@ -39,20 +39,12 @@ export class TrelloDataTransformer {
 
   /**
    * Obtém os nomes dos membros do card
-   * Usa o campo members do card se disponível (quando &members=true na API),
-   * senão faz fallback para mapeamento por ID usando as actions
+   * Usa sempre o campo members do card (quando &members=true na API)
+   * Se members estiver vazio, retorna array vazio (card não será contabilizado)
    */
   private getMemberNames(card: TrelloApiCard): string[] {
-    // Se o card tem o campo members (quando &members=true na API), usar diretamente
     if (card.members && card.members.length > 0) {
       return card.members.map(m => m.fullName);
-    }
-
-    // Fallback: usar mapeamento de IDs construído das actions
-    if (card.idMembers && card.idMembers.length > 0) {
-      return card.idMembers
-        .map(id => this.memberIdToNameMap.get(id) || id)
-        .filter(name => name !== undefined);
     }
 
     return [];
