@@ -5,18 +5,20 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Calendar } from "@/components/ui/calendar";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon, FilterX } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export const FilterSidebar = () => {
   const { filters, updateMembers, updateLabels, updateDateRange, resetFilters } = useFilters();
   const allCards = trelloDataService.getCards();
   const allMembers = trelloDataService.getAllMembers(allCards);
   const allLabels = trelloDataService.getAllLabels(allCards);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const handleMemberToggle = (member: string) => {
     const newMembers = filters.members.includes(member)
@@ -30,6 +32,19 @@ export const FilterSidebar = () => {
       ? filters.labels.filter((l) => l !== label)
       : [...filters.labels, label];
     updateLabels(newLabels);
+  };
+
+  const formatDateRange = () => {
+    if (filters.dateRange.start && filters.dateRange.end) {
+      return `${format(filters.dateRange.start, "dd/MM/yyyy", { locale: ptBR })} - ${format(filters.dateRange.end, "dd/MM/yyyy", { locale: ptBR })}`;
+    }
+    if (filters.dateRange.start) {
+      return `De ${format(filters.dateRange.start, "dd/MM/yyyy", { locale: ptBR })}`;
+    }
+    if (filters.dateRange.end) {
+      return `Até ${format(filters.dateRange.end, "dd/MM/yyyy", { locale: ptBR })}`;
+    }
+    return "Selecione o período";
   };
 
   return (
@@ -50,26 +65,58 @@ export const FilterSidebar = () => {
 
         <ScrollArea className="h-[calc(100vh-180px)]">
           <div className="space-y-6">
+            {/* Filtro de Período */}
+            <div>
+              <Label className="text-base font-semibold mb-3 block">Período</Label>
+              <Popover open={isDatePickerOpen} onOpenChange={setIsDatePickerOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !filters.dateRange.start && !filters.dateRange.end && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {formatDateRange()}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0 bg-popover z-50" align="start">
+                  <DateRangePicker
+                    value={filters.dateRange}
+                    onChange={(start, end) => {
+                      updateDateRange(start, end);
+                    }}
+                    onClose={() => setIsDatePickerOpen(false)}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+
+            <Separator />
+
             {/* Filtro de Membros */}
             <div>
               <Label className="text-base font-semibold mb-3 block">Membros</Label>
-              <div className="space-y-3">
-                {allMembers.map((member) => (
-                  <div key={member} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={`member-${member}`}
-                      checked={filters.members.includes(member)}
-                      onCheckedChange={() => handleMemberToggle(member)}
-                    />
-                    <label
-                      htmlFor={`member-${member}`}
-                      className="text-sm cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      {member}
-                    </label>
-                  </div>
-                ))}
-              </div>
+              <ScrollArea className="h-[240px] pr-4">
+                <div className="space-y-3">
+                  {allMembers.map((member) => (
+                    <div key={member} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`member-${member}`}
+                        checked={filters.members.includes(member)}
+                        onCheckedChange={() => handleMemberToggle(member)}
+                      />
+                      <label
+                        htmlFor={`member-${member}`}
+                        className="text-sm cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {member}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
             </div>
 
             <Separator />
@@ -77,85 +124,25 @@ export const FilterSidebar = () => {
             {/* Filtro de Clientes */}
             <div>
               <Label className="text-base font-semibold mb-3 block">Clientes</Label>
-              <div className="space-y-3">
-                {allLabels.map((label) => (
-                  <div key={label} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={`label-${label}`}
-                      checked={filters.labels.includes(label)}
-                      onCheckedChange={() => handleLabelToggle(label)}
-                    />
-                    <label
-                      htmlFor={`label-${label}`}
-                      className="text-sm cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      {label}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <Separator />
-
-            {/* Filtro de Período */}
-            <div>
-              <Label className="text-base font-semibold mb-3 block">Período</Label>
-              <div className="space-y-3">
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !filters.dateRange.start && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {filters.dateRange.start ? (
-                        format(filters.dateRange.start, "PPP", { locale: ptBR })
-                      ) : (
-                        <span>Data inicial</span>
-                      )}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-popover z-50">
-                    <Calendar
-                      mode="single"
-                      selected={filters.dateRange.start || undefined}
-                      onSelect={(date) => updateDateRange(date || null, filters.dateRange.end)}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !filters.dateRange.end && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {filters.dateRange.end ? (
-                        format(filters.dateRange.end, "PPP", { locale: ptBR })
-                      ) : (
-                        <span>Data final</span>
-                      )}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-popover z-50">
-                    <Calendar
-                      mode="single"
-                      selected={filters.dateRange.end || undefined}
-                      onSelect={(date) => updateDateRange(filters.dateRange.start, date || null)}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
+              <ScrollArea className="h-[240px] pr-4">
+                <div className="space-y-3">
+                  {allLabels.map((label) => (
+                    <div key={label} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`label-${label}`}
+                        checked={filters.labels.includes(label)}
+                        onCheckedChange={() => handleLabelToggle(label)}
+                      />
+                      <label
+                        htmlFor={`label-${label}`}
+                        className="text-sm cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
             </div>
           </div>
         </ScrollArea>

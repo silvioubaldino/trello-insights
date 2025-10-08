@@ -133,6 +133,7 @@ class TrelloDataService {
 
   /**
    * Calcula entregas agrupadas por label (cliente)
+   * Retorna os 10 maiores clientes ordenados, agrupando os demais como "Outros"
    */
   getDeliveriesByLabel(cards: TrelloCardLegacy[]): ChartData[] {
     const labelCounts: Record<string, number> = {};
@@ -143,14 +144,42 @@ class TrelloDataService {
       });
     });
 
-    return Object.entries(labelCounts).map(([name, value]) => ({
+    // Ordenar do maior para o menor
+    const sortedLabels = Object.entries(labelCounts)
+      .sort(([, a], [, b]) => b - a);
+
+    // Se houver 10 ou menos labels, retornar todos ordenados
+    if (sortedLabels.length <= 10) {
+      return sortedLabels.map(([name, value]) => ({
+        name,
+        value,
+      }));
+    }
+
+    // Pegar os 10 maiores
+    const top10 = sortedLabels.slice(0, 10).map(([name, value]) => ({
       name,
       value,
     }));
+
+    // Agrupar o resto como "Outros"
+    const othersSum = sortedLabels
+      .slice(10)
+      .reduce((sum, [, value]) => sum + value, 0);
+
+    if (othersSum > 0) {
+      top10.push({
+        name: "Outros",
+        value: othersSum,
+      });
+    }
+
+    return top10;
   }
 
   /**
    * Calcula entregas agrupadas por membro
+   * Ordenado do maior para o menor
    */
   getDeliveriesByMember(cards: TrelloCardLegacy[]): ChartData[] {
     const memberCounts: Record<string, number> = {};
@@ -159,10 +188,12 @@ class TrelloDataService {
       memberCounts[card.member] = (memberCounts[card.member] || 0) + 1;
     });
 
-    return Object.entries(memberCounts).map(([name, value]) => ({
-      name,
-      value,
-    }));
+    return Object.entries(memberCounts)
+      .sort(([, a], [, b]) => b - a)
+      .map(([name, value]) => ({
+        name,
+        value,
+      }));
   }
 
   /**
@@ -187,6 +218,7 @@ class TrelloDataService {
 
   /**
    * Calcula média de dias que cards ficaram abertos por membro
+   * Ordenado do maior para o menor
    */
   getAverageDaysOpenByMember(cards: TrelloCardLegacy[]): ChartData[] {
     const memberData: Record<string, { total: number; count: number }> = {};
@@ -201,10 +233,12 @@ class TrelloDataService {
       }
     });
 
-    return Object.entries(memberData).map(([name, data]) => ({
-      name,
-      value: Math.round((data.total / data.count) * 10) / 10,
-    }));
+    return Object.entries(memberData)
+      .map(([name, data]) => ({
+        name,
+        value: Math.round((data.total / data.count) * 10) / 10,
+      }))
+      .sort((a, b) => b.value - a.value);
   }
 
   /**
