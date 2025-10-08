@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCardsByBoard } from '@/server/trello';
 
-export async function GET(_req: NextRequest, { params }: { params: { boardId: string } }) {
-  const { boardId } = params;
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ boardId: string }> }) {
+  const { boardId } = await params;
   try {
     const data = await getCardsByBoard(boardId);
     return NextResponse.json(data, { status: 200 });

@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { FilterProvider, useFilters } from "@/contexts/FilterContext";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { FilterSidebar } from "@/components/dashboard/FilterSidebar";
@@ -7,10 +8,34 @@ import { BarChartCard } from "@/components/dashboard/charts/BarChartCard";
 import { LineChartCard } from "@/components/dashboard/charts/LineChartCard";
 import { CounterCard } from "@/components/dashboard/charts/CounterCard";
 import { trelloDataService } from "@/services/trelloDataService";
-import { Layers, TrendingUp } from "lucide-react";
+import { Layers, TrendingUp, Loader2 } from "lucide-react";
+
+// Board ID fixo - pode ser movido para variável de ambiente posteriormente
+const BOARD_ID = "659436fd99b94b5c7432e98e";
 
 const DashboardContent = () => {
   const { filters } = useFilters();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Carrega dados da API do Trello ao montar o componente
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        await trelloDataService.refreshFromBackend(BOARD_ID);
+      } catch (err) {
+        console.error("Erro ao carregar dados:", err);
+        setError("Erro ao carregar dados. Usando dados mockados.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
   const allCards = trelloDataService.getCards();
   const filteredCards = trelloDataService.filterCards(allCards, filters);
 
@@ -31,7 +56,20 @@ const DashboardContent = () => {
         <DashboardHeader />
         
         <main className="flex-1 p-6">
-          <div className="max-w-[1600px] mx-auto space-y-6">
+          {isLoading ? (
+            <div className="flex items-center justify-center h-96">
+              <div className="text-center space-y-4">
+                <Loader2 className="h-12 w-12 animate-spin mx-auto text-primary" />
+                <p className="text-muted-foreground">Carregando dados do Trello...</p>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-[1600px] mx-auto space-y-6">
+              {error && (
+                <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded">
+                  {error}
+                </div>
+              )}
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <CounterCard
@@ -76,7 +114,8 @@ const DashboardContent = () => {
                 data={avgDaysOpenByMember}
               />
             </div>
-          </div>
+            </div>
+          )}
         </main>
       </div>
     </div>

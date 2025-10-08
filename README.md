@@ -69,18 +69,24 @@ Para permitir chamadas seguras à API do Trello (sem expor chaves no cliente), a
 Crie um arquivo `.env.local` na raiz do projeto com:
 
 ```
-TRELLO_API_KEY=seu_key
-TRELLO_API_TOKEN=seu_token
+TRELLO_API_KEY=sua_api_key_aqui
+TRELLO_API_TOKEN=seu_token_aqui
+TRELLO_BOARD_ID=659436fd99b94b5c7432e98e
 ```
+
+**Como obter suas credenciais:**
+1. Acesse [https://trello.com/power-ups/admin](https://trello.com/power-ups/admin)
+2. Gere sua API Key
+3. Gere um Token com permissões de leitura
 
 As variáveis são usadas apenas no servidor (rotas em `src/app/api/trello/*`).
 
-### Endpoints (placeholders)
+### Endpoints da API
 
-- `GET /api/trello/cards/[boardId]` → retorna cards do board (placeholder)
-- `GET /api/trello/actions/[boardId]` → retorna actions do board (placeholder)
+- `GET /api/trello/cards/[boardId]` → retorna cards do board (com membros)
+- `GET /api/trello/actions/[boardId]` → retorna actions do board (desde 01/01/2025)
 
-A implementação de fetch real está preparada em `src/server/trello.ts` usando `server-only` e `cache`. Para ativar, substitua os `return []` por `fetchJson(url)` conforme comentários no arquivo.
+A implementação está em `src/server/trello.ts` usando `server-only` e `cache` do React para memoização.
 
 ### UI e Serviços
 
