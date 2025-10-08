@@ -17,7 +17,7 @@ function getAuthQuery() {
 
 // Placeholder de fetcher (poderemos trocar por trello SDK ou fetch com proxy)
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { next: { revalidate: 300 } }); // cache 5min por rota
+  const res = await fetch(url, { next: { revalidate: 43200 } }); // cache 12h por rota
   if (!res.ok) {
     try {
       const u = new URL(url);
