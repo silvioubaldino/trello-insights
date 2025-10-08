@@ -19,8 +19,13 @@ function getAuthQuery() {
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { next: { revalidate: 300 } }); // cache 5min por rota
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Falha ao buscar ${url}: ${res.status} ${text}`);
+    try {
+      const u = new URL(url);
+      console.error('Trello fetch failed', { status: res.status, path: u.pathname });
+    } catch {
+      console.error('Trello fetch failed', { status: res.status });
+    }
+    throw new Error('Falha ao buscar dados do Trello');
   }
   return res.json();
 }
