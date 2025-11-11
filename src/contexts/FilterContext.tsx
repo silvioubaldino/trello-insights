@@ -12,12 +12,35 @@ interface FilterContextType {
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
+/**
+ * Retorna o domingo da semana atual
+ */
+const getCurrentWeekStart = (): Date => {
+  const today = new Date();
+  const dayOfWeek = today.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+  const sunday = new Date(today);
+  sunday.setDate(today.getDate() - dayOfWeek);
+  sunday.setHours(0, 0, 0, 0);
+  return sunday;
+};
+
+/**
+ * Retorna o sábado da semana atual
+ */
+const getCurrentWeekEnd = (): Date => {
+  const sunday = getCurrentWeekStart();
+  const saturday = new Date(sunday);
+  saturday.setDate(sunday.getDate() + 6);
+  saturday.setHours(23, 59, 59, 999);
+  return saturday;
+};
+
 const initialFilters: TrelloFilters = {
   members: [],
   labels: [],
   dateRange: {
-    start: null,
-    end: null,
+    start: getCurrentWeekStart(),
+    end: getCurrentWeekEnd(),
   },
 };
 
@@ -40,7 +63,14 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const resetFilters = () => {
-    setFilters(initialFilters);
+    setFilters({
+      members: [],
+      labels: [],
+      dateRange: {
+        start: getCurrentWeekStart(),
+        end: getCurrentWeekEnd(),
+      },
+    });
   };
 
   return (

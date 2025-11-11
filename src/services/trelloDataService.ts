@@ -72,6 +72,83 @@ class TrelloDataService {
   }
 
   /**
+   * Enriquece os cards transformados com contadores de rejeições
+   * baseado nas actions do board desde uma data específica
+   */
+  async enrichRejectionsByActions(boardId: string, since: Date): Promise<void> {
+    try {
+      console.log(`[enrichRejectionsByActions] Buscando actions desde ${since.toISOString()}`);
+      
+      const res = await fetch(
+        `/api/trello/actions/${encodeURIComponent(boardId)}?since=${encodeURIComponent(since.toISOString())}`,
+        {
+          method: 'GET',
+          headers: { 'content-type': 'application/json' },
+        }
+      );
+      
+      if (!res.ok) {
+        throw new Error(`Falha ao obter actions paginadas: ${res.status}`);
+      }
+      
+      const actions = await res.json() as TrelloApiAction[];
+      console.log(`[enrichRejectionsByActions] Recebidas ${actions.length} actions`);
+      
+      // Resetar contadores antes de processar
+      this.transformedCards.forEach(card => {
+        card.rejectionsByClient = 0;
+        card.rejectionsByTeam = 0;
+      });
+      
+      // Agrupar actions por card
+      const actionsByCard = new Map<string, TrelloApiAction[]>();
+      actions.forEach(action => {
+        if (action.data.card?.id) {
+          const cardId = action.data.card.id;
+          if (!actionsByCard.has(cardId)) {
+            actionsByCard.set(cardId, []);
+          }
+          actionsByCard.get(cardId)!.push(action);
+        }
+      });
+      
+      // Processar cada card
+      this.transformedCards.forEach(card => {
+        const cardActions = actionsByCard.get(card.id) || [];
+        
+        // Filtrar apenas movimentos de lista
+        const moveActions = cardActions.filter(
+          action => 
+            action.type === 'updateCard' && 
+            action.data.listBefore && 
+            action.data.listAfter
+        );
+        
+        // Aplicar regras de rejeição
+        moveActions.forEach(action => {
+          const fromList = action.data.listBefore?.name || '';
+          const toList = action.data.listAfter?.name || '';
+          
+          // Rejeição do cliente: de "ENVIADO PARA O CLIENTE" para "AJUSTES"
+          if (fromList === 'ENVIADO PARA O CLIENTE' && toList === 'AJUSTES') {
+            card.rejectionsByClient++;
+          }
+          
+          // Rejeição do time: de "REVISÃO" para "AJUSTES"
+          if (fromList === 'REVISÃO' && toList === 'AJUSTES') {
+            card.rejectionsByTeam++;
+          }
+        });
+      });
+      
+      console.log(`[enrichRejectionsByActions] Contadores atualizados para ${this.transformedCards.length} cards`);
+    } catch (error) {
+      console.error('[enrichRejectionsByActions] Erro:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Converte TrelloCard para o formato legado (para compatibilidade com UI existente)
    */
   private convertToLegacyFormat(cards: TrelloCard[]): TrelloCardLegacy[] {
@@ -237,6 +314,41 @@ class TrelloDataService {
       .map(([name, data]) => ({
         name,
         value: Math.round((data.total / data.count) * 10) / 10,
+      }))
+      .sort((a, b) => b.value - a.value);
+  }
+
+  /**
+   * Calcula rejeições agrupadas por membro
+   * Retorna dados para gráfico empilhado com rejeições internas e do cliente
+   */
+  getRejectionsByMember(cards: TrelloCardLegacy[]): ChartData[] {
+    const memberData: Record<string, { team: number; client: number }> = {};
+
+    // Criar mapa de id -> card transformado para acessar contadores
+    const transformedMap = new Map<string, TrelloCard>();
+    this.transformedCards.forEach(card => {
+      transformedMap.set(card.id, card);
+    });
+
+    cards.forEach((card) => {
+      const transformedCard = transformedMap.get(card.id);
+      if (!transformedCard) return;
+
+      if (!memberData[card.member]) {
+        memberData[card.member] = { team: 0, client: 0 };
+      }
+      
+      memberData[card.member].team += transformedCard.rejectionsByTeam;
+      memberData[card.member].client += transformedCard.rejectionsByClient;
+    });
+
+    return Object.entries(memberData)
+      .map(([name, data]) => ({
+        name,
+        value: data.team + data.client,
+        "Rejeições Internas": data.team,
+        "Rejeições do Cliente": data.client,
       }))
       .sort((a, b) => b.value - a.value);
   }

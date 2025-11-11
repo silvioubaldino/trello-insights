@@ -18,6 +18,7 @@ const DashboardContent = () => {
   const { filters } = useFilters();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isEnrichingRejections, setIsEnrichingRejections] = useState(false);
 
   // Carrega dados da API do Trello ao montar o componente
   useEffect(() => {
@@ -36,6 +37,40 @@ const DashboardContent = () => {
 
     loadData();
   }, []);
+
+  // Enriquece com rejeições quando o período de filtro muda
+  useEffect(() => {
+    const enrichRejections = async () => {
+      const allCards = trelloDataService.getCards();
+      const filteredCards = trelloDataService.filterCards(allCards, filters);
+      
+      if (filteredCards.length === 0) {
+        console.log('[enrichRejections] Nenhum card no período, pulando enriquecimento');
+        return;
+      }
+      
+      // Encontrar a menor data de criação entre os cards filtrados
+      const minDate = filteredCards.reduce((min, card) => {
+        return card.dateCreated < min ? card.dateCreated : min;
+      }, filteredCards[0].dateCreated);
+      
+      console.log(`[enrichRejections] Enriquecendo desde ${minDate.toISOString()}`);
+      
+      try {
+        setIsEnrichingRejections(true);
+        await trelloDataService.enrichRejectionsByActions(BOARD_ID, minDate);
+      } catch (err) {
+        console.error("Erro ao enriquecer rejeições:", err);
+      } finally {
+        setIsEnrichingRejections(false);
+      }
+    };
+
+    // Só enriquecer se já carregou os dados iniciais
+    if (!isLoading) {
+      enrichRejections();
+    }
+  }, [filters.dateRange, isLoading]);
 
   const allCards = trelloDataService.getCards();
   const filteredCards = trelloDataService.filterCards(allCards, filters);

@@ -3,7 +3,7 @@ import { Providers } from './providers';
 import '@/index.css';
 
 export const metadata: Metadata = {
-  title: 'Trello Lovelier Insights',
+  title: 'Trello Insights',
   description: 'Dashboard de analytics sobre dados do Trello',
 };
 

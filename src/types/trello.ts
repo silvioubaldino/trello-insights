@@ -58,6 +58,8 @@ export interface TrelloCard {
     client_rejected_number: number;
     days_open: number;
   };
+  rejectionsByClient: number;
+  rejectionsByTeam: number;
 }
 
 // Tipos para filtros e gráficos (compatíveis com a UI existente)

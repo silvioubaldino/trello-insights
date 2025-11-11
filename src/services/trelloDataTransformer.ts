@@ -82,6 +82,8 @@ export class TrelloDataTransformer {
         ...metrics,
         days_open,
       },
+      rejectionsByClient: 0,
+      rejectionsByTeam: 0,
     };
   }
 

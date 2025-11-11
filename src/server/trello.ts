@@ -53,7 +53,7 @@ export const getCardsByBoard = cache(async (boardId: string): Promise<TrelloApiC
   console.log(`\n[getCardsByBoard] Fetching cards for board: ${boardId}`);
   // Filtra apenas os campos necessários para reduzir tamanho da resposta
   const fields = 'id,name,labels,idMembers,closed,due,dateLastActivity';
-  const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/cards?${getAuthQuery()}&members=true&fields=${fields}`;
+  const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/cards?${getAuthQuery()}&members=true&member_fields=id,fullName&fields=${fields}`;
   const result = await fetchJson<TrelloApiCard[]>(url);
   console.log(`[getCardsByBoard] Returned ${result.length} cards\n`);
   return result;
@@ -69,4 +69,38 @@ export const getActionsByBoard = cache(async (boardId: string): Promise<TrelloAp
   const result = await fetchJson<TrelloApiAction[]>(url);
   console.log(`[getActionsByBoard] Returned ${result.length} actions (filtered: createCard + list movements)\n`);
   return result;
+});
+
+export const getActionsByBoardPaged = cache(async (boardId: string, since: string): Promise<TrelloApiAction[]> => {
+  console.log(`\n[getActionsByBoardPaged] Fetching actions for board: ${boardId} since ${since}`);
+  
+  let allActions: TrelloApiAction[] = [];
+  let cursor = since;
+  let iteration = 0;
+  
+  while (true) {
+    iteration++;
+    const filter = 'createCard,updateCard:idList';
+    const fields = 'id,date,data,type';
+    const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/actions?since=${cursor}&filter=${filter}&fields=${fields}&memberCreator=true&memberCreator_fields=id,fullName&limit=1000&${getAuthQuery()}`;
+    
+    console.log(`  ├─ Iteration ${iteration}: fetching from ${cursor}`);
+    const batch = await fetchJson<TrelloApiAction[]>(url);
+    console.log(`  ├─ Received ${batch.length} actions`);
+    
+    allActions = allActions.concat(batch);
+    
+    if (batch.length < 1000) {
+      console.log(`  └─ Complete: total ${allActions.length} actions in ${iteration} iteration(s)\n`);
+      break;
+    }
+    
+    // Avançar cursor para a data da última action + 1ms
+    const lastAction = batch[batch.length - 1];
+    const lastDate = new Date(lastAction.date);
+    cursor = new Date(lastDate.getTime() + 1).toISOString();
+    console.log(`  ├─ Continuing from ${cursor}`);
+  }
+  
+  return allActions;
 });
