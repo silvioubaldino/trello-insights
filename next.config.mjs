@@ -3,21 +3,30 @@ import path from 'node:path';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  
+  // Configuração para produção Vercel
+  output: 'standalone',
+  
+  // Typed Routes (movido de experimental)
+  typedRoutes: true,
+  
   experimental: {
-    // App Router is default; enabling typed routes and server actions if needed later
-    typedRoutes: true,
+    // App Router features
     serverActions: {
       bodySizeLimit: '2mb',
     },
   },
+  
   eslint: {
-    // We'll fix lint issues progressively; do not block builds
+    // Progressivo: não bloquear builds durante migração
     ignoreDuringBuilds: true,
   },
+  
   typescript: {
-    // Do not block builds on type errors initially during migration
-    ignoreBuildErrors: true,
+    // Progressivo: não bloquear builds durante migração
+    ignoreBuildErrors: false, // Vamos habilitar checagem após migração completa
   },
+  
   webpack(config) {
     // Preserva alias '@' apontando para 'src'
     config.resolve.alias['@'] = config.resolve.alias['@'] || path.resolve(process.cwd(), 'src');

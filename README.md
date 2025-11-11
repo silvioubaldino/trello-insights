@@ -60,38 +60,60 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## Migração para Next.js e API do Trello
+## 🔐 Configuração Segura - Migração Next.js
 
-Para permitir chamadas seguras à API do Trello (sem expor chaves no cliente), a aplicação foi migrada para Next.js com rotas de API server-side.
+**⚠️ IMPORTANTE:** Este projeto usa Next.js para proteger suas credenciais do Trello no servidor.
 
-### Variáveis de ambiente
+### 📖 Documentação Completa
 
-Crie um arquivo `.env.local` na raiz do projeto com:
+- **[SETUP.md](./SETUP.md)** - Guia completo de instalação e configuração
+- **[SECURITY_AUDIT.md](./SECURITY_AUDIT.md)** - Auditoria de segurança e fluxo de dados
+
+### 🚀 Quick Start
+
+1. **Obter credenciais do Trello:**
+   - Acesse: https://trello.com/app-key
+   - Copie sua **API Key** e gere um **Token**
+
+2. **Criar arquivo `.env.local`:**
+   ```bash
+   TRELLO_API_KEY=sua_api_key_aqui
+   TRELLO_API_TOKEN=seu_token_aqui
+   ```
+
+3. **Instalar e executar:**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+### 🔒 Arquitetura de Segurança
 
 ```
-TRELLO_API_KEY=sua_api_key_aqui
-TRELLO_API_TOKEN=seu_token_aqui
-TRELLO_BOARD_ID=659436fd99b94b5c7432e98e
+Browser → /api/trello/* → src/server/trello.ts → api.trello.com
+(público)   (servidor)      (credenciais)         (API Trello)
 ```
 
-**Como obter suas credenciais:**
-1. Acesse [https://trello.com/power-ups/admin](https://trello.com/power-ups/admin)
-2. Gere sua API Key
-3. Gere um Token com permissões de leitura
+✅ **Credenciais protegidas** - nunca expostas ao navegador  
+✅ **API Routes server-side** - todas as chamadas passam pelo servidor  
+✅ **`'server-only'`** - garante execução apenas no servidor  
+✅ **Cache inteligente** - 1 hora de cache para otimizar performance  
 
-As variáveis são usadas apenas no servidor (rotas em `src/app/api/trello/*`).
+### 📡 API Endpoints
 
-### Endpoints da API
+- `GET /api/trello/cards/[boardId]` - Busca cards do board
+- `GET /api/trello/actions/[boardId]` - Busca ações (movimentos, rejeições)
+- `GET /api/trello/actions/[boardId]?since=2025-01-01` - Actions com paginação
 
-- `GET /api/trello/cards/[boardId]` → retorna cards do board (com membros)
-- `GET /api/trello/actions/[boardId]` → retorna actions do board (desde 01/01/2025)
+### 🎯 Deploy na Vercel
 
-A implementação está em `src/server/trello.ts` usando `server-only` e `cache` do React para memoização.
+1. Configure as variáveis de ambiente no dashboard da Vercel:
+   - `TRELLO_API_KEY`
+   - `TRELLO_API_TOKEN`
+2. Faça deploy normalmente
+3. As credenciais ficam protegidas no servidor
 
-### UI e Serviços
-
-- A UI existente foi preservada. A rota `/` renderiza `src/pages/Index.tsx` via App Router.
-- O serviço `src/services/trelloDataService.ts` ganhou um método `refreshFromBackend(boardId)` que busca dados no backend Next e atualiza o estado interno.
+**Veja [SETUP.md](./SETUP.md) para instruções detalhadas**
 
 ## How can I deploy this project?
 
