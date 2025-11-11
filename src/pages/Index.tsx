@@ -17,6 +17,7 @@ const BOARD_ID = "659436fd99b94b5c7432e98e";
 const DashboardContent = () => {
   const { filters } = useFilters();
   const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Carrega dados da API do Trello ao montar o componente
@@ -27,8 +28,9 @@ const DashboardContent = () => {
         setError(null);
         await trelloDataService.refreshFromBackend(BOARD_ID);
       } catch (err) {
-        console.error("Erro ao carregar dados:", err);
-        setError("Erro ao carregar dados. Usando dados mockados.");
+        console.error("❌ [Index]", err);
+        const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
+        setError(`Erro ao carregar dados da API do Trello: ${errorMessage}`);
       } finally {
         setIsLoading(false);
       }
@@ -36,6 +38,23 @@ const DashboardContent = () => {
 
     loadData();
   }, []);
+
+  // Função para forçar atualização dos dados
+  const handleRefresh = async () => {
+    try {
+      setIsRefreshing(true);
+      setError(null);
+      console.log('🔄 [Refresh] Forçando atualização...');
+      await trelloDataService.forceFullRefresh(BOARD_ID);
+      console.log('✅ [Refresh] Dados atualizados');
+    } catch (err) {
+      console.error("❌ [Refresh]", err);
+      const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
+      setError(`Erro ao atualizar dados: ${errorMessage}`);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   const allCards = trelloDataService.getCards();
   const filteredCards = trelloDataService.filterCards(allCards, filters);
@@ -55,7 +74,7 @@ const DashboardContent = () => {
       <FilterSidebar />
       
       <div className="flex-1 flex flex-col">
-        <DashboardHeader />
+        <DashboardHeader onRefresh={handleRefresh} isRefreshing={isRefreshing} />
         
         <main className="flex-1 p-6">
           {isLoading ? (

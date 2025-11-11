@@ -1,74 +1,117 @@
-import { TrelloCard, TrelloCardLegacy, TrelloFilters, ChartData, TrelloApiCard, TrelloApiAction } from "@/types/trello";
+import { TrelloCard, TrelloCardLegacy, TrelloFilters, ChartData } from "@/types/trello";
 import { trelloDataTransformer } from "./trelloDataTransformer";
+import { trelloIncrementalFetcher } from "./trelloIncrementalFetcher";
+import { DateRange } from "./cache/types";
 
-// Importar mocks da API do Trello
-import cardsJsonData from "@/data/mocks/getCards.json";
-import actionsJsonData from "@/data/mocks/getActions.json";
+/**
+ * Calcula o início da semana atual (domingo)
+ */
+function getCurrentWeekStart(): Date {
+  const today = new Date();
+  const dayOfWeek = today.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+  
+  // Retrocede para o domingo da semana atual
+  const sunday = new Date(today);
+  sunday.setDate(today.getDate() - dayOfWeek);
+  
+  // Zera horas para início do dia
+  sunday.setHours(0, 0, 0, 0);
+  
+  return sunday;
+}
+
+/**
+ * Calcula o fim da semana atual (sábado 23:59:59)
+ */
+function getCurrentWeekEnd(): Date {
+  const weekStart = getCurrentWeekStart();
+  const saturday = new Date(weekStart);
+  
+  // Avança 6 dias para o sábado
+  saturday.setDate(weekStart.getDate() + 6);
+  
+  // Define para fim do dia
+  saturday.setHours(23, 59, 59, 999);
+  
+  return saturday;
+}
 
 /**
  * Serviço para gerenciar dados do Trello
  * Processa dados da API e fornece métodos para filtragem e análise
+ * 
+ * Utiliza cache incremental inteligente (IndexedDB) para otimizar performance
  */
 class TrelloDataService {
   private transformedCards: TrelloCard[];
 
   constructor() {
-    // Inicialmente carrega dos mocks (fallback local para dev/offline)
-    this.transformedCards = this.loadAndTransformData();
+    // Inicializa vazio - dados são carregados via refreshFromBackend()
+    this.transformedCards = [];
   }
 
   /**
-   * Carrega e transforma os dados dos mocks da API
+   * Carrega dados do Trello via API com cache incremental inteligente
+   * 
+   * Funcionalidades:
+   * - Cache persistente no IndexedDB (sobrevive a cold starts)
+   * - Busca apenas gaps faltantes
+   * - Suporta períodos customizados
+   * - Fetching paralelo otimizado
+   * 
+   * @param boardId - ID do board do Trello
+   * @param dateRange - Período opcional (padrão: semana atual domingo-sábado)
+   * @param forceRefresh - Se true, ignora cache e busca tudo novamente
    */
-  private loadAndTransformData(): TrelloCard[] {
+  async refreshFromBackend(
+    boardId: string, 
+    dateRange?: DateRange,
+    forceRefresh: boolean = false
+  ): Promise<void> {
+    const defaultDateRange: DateRange = dateRange || {
+      start: getCurrentWeekStart(),
+      end: getCurrentWeekEnd(),
+    };
+
     try {
-      const cards = cardsJsonData as unknown as TrelloApiCard[];
-      const actions = actionsJsonData as unknown as TrelloApiAction[];
+      const result = await trelloIncrementalFetcher.fetchPeriod({
+        boardId,
+        dateRange: defaultDateRange,
+        forceRefresh,
+        parallel: true,
+      });
+
+      // Transforma dados
+      this.transformedCards = trelloDataTransformer.transform(result.cards, result.actions);
       
-      return trelloDataTransformer.transform(cards, actions);
+      console.log(`✅ [Data Service] ${this.transformedCards.length} cards prontos`);
     } catch (error) {
-      console.error("Erro ao carregar dados do Trello:", error);
-      return [];
+      console.error('❌ [Data Service]', error);
+      throw error;
     }
   }
 
   /**
-   * Novo fluxo: carregar dados do backend (Next API) por board.
-   * Mantém compatibilidade: retorna também no formato legado via getCards().
+   * Retorna estatísticas do cache para monitoramento
    */
-  async refreshFromBackend(boardId: string): Promise<void> {
-    try {
-      const [cards, actions] = await Promise.all([
-        this.fetchCardsFromBackend(boardId),
-        this.fetchActionsFromBackend(boardId),
-      ]);
-      this.transformedCards = trelloDataTransformer.transform(cards, actions);
-    } catch (error) {
-      console.error('Erro ao buscar backend, mantendo dados locais:', error);
-    }
+  async getCacheStats(boardId: string) {
+    return trelloIncrementalFetcher.getCacheStats(boardId);
   }
 
-  private async fetchCardsFromBackend(boardId: string): Promise<TrelloApiCard[]> {
-    const res = await fetch(`/api/trello/cards/${encodeURIComponent(boardId)}`, {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-      // Cache de navegação padrão; pode ser ajustado com React Query
-    });
-    if (!res.ok) {
-      throw new Error(`Falha ao obter cards: ${res.status}`);
-    }
-    return res.json();
+  /**
+   * Limpa o cache de um board específico
+   */
+  async clearCache(boardId: string) {
+    console.log(`[TrelloDataService] Limpando cache do board ${boardId}`);
+    await trelloIncrementalFetcher.clearCache(boardId);
   }
 
-  private async fetchActionsFromBackend(boardId: string): Promise<TrelloApiAction[]> {
-    const res = await fetch(`/api/trello/actions/${encodeURIComponent(boardId)}`, {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-    });
-    if (!res.ok) {
-      throw new Error(`Falha ao obter actions: ${res.status}`);
-    }
-    return res.json();
+  /**
+   * Força refresh completo (ignora cache)
+   */
+  async forceFullRefresh(boardId: string, dateRange?: DateRange) {
+    console.log('[TrelloDataService] Forçando refresh completo (ignorando cache)');
+    return this.refreshFromBackend(boardId, dateRange, true);
   }
 
   /**
@@ -237,6 +280,41 @@ class TrelloDataService {
       .map(([name, data]) => ({
         name,
         value: Math.round((data.total / data.count) * 10) / 10,
+      }))
+      .sort((a, b) => b.value - a.value);
+  }
+
+  /**
+   * Calcula rejeições internas e externas agrupadas por membro
+   * Retorna dados para gráfico de barras empilhadas
+   */
+  getRejectionsByMember(cards: TrelloCardLegacy[]): ChartData[] {
+    const memberData: Record<string, { internal: number; external: number }> = {};
+    
+    // Criar mapa de IDs dos cards filtrados para consulta rápida
+    const filteredCardIds = new Set(cards.map(c => c.id));
+
+    // Usar os cards transformados para ter acesso às métricas
+    // mas considerar apenas os que passaram pelos filtros
+    this.transformedCards
+      .filter(card => filteredCardIds.has(card.id))
+      .forEach((card) => {
+        card.members.forEach((member) => {
+          if (!memberData[member]) {
+            memberData[member] = { internal: 0, external: 0 };
+          }
+          memberData[member].internal += card.metrics.internal_rejected_number;
+          memberData[member].external += card.metrics.client_rejected_number;
+        });
+      });
+
+    // Converter para formato do gráfico e ordenar pelo total de rejeições
+    return Object.entries(memberData)
+      .map(([name, data]) => ({
+        name,
+        value: data.internal + data.external, // Total de rejeições
+        "Rejeições Internas": data.internal,
+        "Rejeições do Cliente": data.external,
       }))
       .sort((a, b) => b.value - a.value);
   }

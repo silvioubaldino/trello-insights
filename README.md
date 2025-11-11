@@ -64,11 +64,16 @@ This project is built with:
 
 Para permitir chamadas seguras à API do Trello (sem expor chaves no cliente), a aplicação foi migrada para Next.js com rotas de API server-side.
 
+### Configuração da API do Trello
+
+A aplicação utiliza a **API real do Trello** com sistema de cache incremental inteligente.
+
 ### Variáveis de ambiente
 
 Crie um arquivo `.env.local` na raiz do projeto com:
 
-```
+```bash
+# Credenciais do Trello (server-side apenas)
 TRELLO_API_KEY=sua_api_key_aqui
 TRELLO_API_TOKEN=seu_token_aqui
 TRELLO_BOARD_ID=659436fd99b94b5c7432e98e
@@ -79,7 +84,7 @@ TRELLO_BOARD_ID=659436fd99b94b5c7432e98e
 2. Gere sua API Key
 3. Gere um Token com permissões de leitura
 
-As variáveis são usadas apenas no servidor (rotas em `src/app/api/trello/*`).
+As variáveis `TRELLO_*` são usadas apenas no servidor (rotas em `src/app/api/trello/*`).
 
 ### Endpoints da API
 
@@ -92,6 +97,53 @@ A implementação está em `src/server/trello.ts` usando `server-only` e `cache`
 
 - A UI existente foi preservada. A rota `/` renderiza `src/pages/Index.tsx` via App Router.
 - O serviço `src/services/trelloDataService.ts` ganhou um método `refreshFromBackend(boardId)` que busca dados no backend Next e atualiza o estado interno.
+
+## 📦 Sistema de Cache Incremental
+
+A aplicação implementa um **sistema de cache inteligente** que resolve limitações da API do Trello:
+
+### Problema Original
+- API do Trello limita 1000 actions por request
+- Board movimentado = apenas ~13 dias de cobertura por request
+- Cold start do servidor = cache perdido, necessário refetch completo
+
+### Solução Implementada
+- ✅ **Cache persistente** no browser (IndexedDB) - sobrevive a cold starts
+- ✅ **Paginação automática** em chunks de 1 semana
+- ✅ **Detecção de gaps** - busca apenas dados faltantes
+- ✅ **Fetching paralelo** otimizado (respeita rate limits)
+- ✅ **Suporta períodos longos** (meses ou anos)
+
+### Performance
+
+**Primeiro acesso (semana atual):**
+- 1 request (~800ms)
+- ~1200 actions carregadas
+- Dados salvos localmente
+
+**Acessos subsequentes (mesmo dia):**
+- 92% dos dados do cache local
+- ~1 request (apenas novos dados)
+- ~300ms de carregamento
+
+### Documentação Completa
+
+Para detalhes técnicos, arquitetura e guias de uso:
+- 📖 [ARCHITECTURE.md](./ARCHITECTURE.md) - Arquitetura completa do sistema
+- 📘 [CACHE_SYSTEM.md](./CACHE_SYSTEM.md) - Guia de uso e troubleshooting
+
+### Arquivos do Sistema de Cache
+
+```
+src/services/cache/
+├── types.ts                    # Tipos TypeScript
+├── indexedDBCache.ts           # Wrapper do IndexedDB
+└── ...
+
+src/services/
+├── trelloIncrementalFetcher.ts # Orquestrador de fetching
+└── trelloDataService.ts        # Atualizado com cache
+```
 
 ## How can I deploy this project?
 

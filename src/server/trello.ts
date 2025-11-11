@@ -15,58 +15,41 @@ function getAuthQuery() {
   return `key=${encodeURIComponent(key)}&token=${encodeURIComponent(token)}`;
 }
 
-// Fetcher com cache de 1 hora (3600s) - otimizado com filtro de campos
+// Fetcher com cache de 1 hora (3600s)
 async function fetchJson<T>(url: string): Promise<T> {
-  const startTime = Date.now();
-  
   const res = await fetch(url, { 
-    next: { revalidate: 3600 }, // Cache de 1 hora
+    next: { revalidate: 3600 },
   });
   
-  const duration = Date.now() - startTime;
-  
-  // Log detalhado para monitorar cache
-  const urlObj = new URL(url);
-  const isCached = res.headers.get('x-vercel-cache') || 
-                   res.headers.get('x-nextjs-cache') || 
-                   (duration < 50 ? 'HIT (fast)' : 'MISS (slow)');
-  
-  console.log(`[Trello API] ${urlObj.pathname}`);
-  console.log(`  ├─ Cache: ${isCached}`);
-  console.log(`  ├─ Duration: ${duration}ms`);
-  console.log(`  └─ Status: ${res.status}`);
-  
   if (!res.ok) {
-    console.error('Trello fetch failed', { status: res.status, path: urlObj.pathname });
+    console.error(`❌ [Trello API] ${res.status}`);
     throw new Error('Falha ao buscar dados do Trello');
   }
   
-  const data = await res.json();
-  const dataSize = JSON.stringify(data).length;
-  console.log(`  └─ Response size: ${(dataSize / 1024).toFixed(2)} KB`);
-  
-  return data;
+  return res.json();
 }
 
 // Funções com memoização no lado do servidor
 export const getCardsByBoard = cache(async (boardId: string): Promise<TrelloApiCard[]> => {
-  console.log(`\n[getCardsByBoard] Fetching cards for board: ${boardId}`);
-  // Filtra apenas os campos necessários para reduzir tamanho da resposta
   const fields = 'id,name,labels,idMembers,closed,due,dateLastActivity';
   const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/cards?${getAuthQuery()}&members=true&fields=${fields}`;
-  const result = await fetchJson<TrelloApiCard[]>(url);
-  console.log(`[getCardsByBoard] Returned ${result.length} cards\n`);
-  return result;
+  return fetchJson<TrelloApiCard[]>(url);
 });
 
-export const getActionsByBoard = cache(async (boardId: string): Promise<TrelloApiAction[]> => {
-  console.log(`\n[getActionsByBoard] Fetching actions for board: ${boardId}`);
-  const since = '2025-01-01';
-  const filter = 'updateCard:idList';
+export const getActionsByBoard = cache(async (
+  boardId: string,
+  since?: string,
+  before?: string
+): Promise<TrelloApiAction[]> => {
+  const sinceParam = since || '2025-01-01';
+  const filter = 'updateCard:idList,createCard';
   const fields = 'id,date,data';
 
-  const url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/actions?since=${since}&filter=${filter}&fields=${fields}&memberCreator=true&memberCreator_fields=id,fullName&limit=1000&${getAuthQuery()}`;
-  const result = await fetchJson<TrelloApiAction[]>(url);
-  console.log(`[getActionsByBoard] Returned ${result.length} actions (filtered: createCard + list movements)\n`);
-  return result;
+  let url = `${TRELLO_API_BASE}/boards/${encodeURIComponent(boardId)}/actions?since=${sinceParam}&filter=${filter}&fields=${fields}&memberCreator=true&memberCreator_fields=id,fullName&limit=1000&${getAuthQuery()}`;
+  
+  if (before) {
+    url += `&before=${before}`;
+  }
+  
+  return fetchJson<TrelloApiAction[]>(url);
 });
