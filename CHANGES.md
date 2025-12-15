@@ -1,186 +1,169 @@
-# 📝 Changelog - Migração Next.js
+# Changelog - Autenticação Google OAuth
 
-## 🔄 Arquivos Modificados
+## [1.1.0] - 2025-11-11
 
-### Configuração
-- ✏️ **package.json** - Scripts atualizados para Next.js
-- ✏️ **next.config.mjs** - Otimizado para produção (output: standalone)
-- ✏️ **README.md** - Documentação atualizada com guia de segurança
+### 🔐 Adicionado - Sistema de Autenticação
 
-### Estrutura Next.js
-- ✏️ **src/app/page.tsx** - Agora importa Dashboard de components/pages
+#### Funcionalidades
+- ✅ Login obrigatório via Google OAuth
+- ✅ Autorização por domínio (@manacacomunicacao.com.br)
+- ✅ Proteção automática de todas as páginas
+- ✅ Proteção automática de todas as APIs
+- ✅ Sessão gerenciada via JWT (sem banco de dados)
+- ✅ Página de login moderna com shadcn/ui
+- ✅ Mensagens de erro amigáveis
+- ✅ Dupla camada de validação de domínio
 
-## ➕ Arquivos Adicionados
+#### Arquivos Criados
 
-### Documentação
-- ✨ **SETUP.md** - Guia completo de instalação e configuração
-- ✨ **SECURITY_AUDIT.md** - Auditoria de segurança detalhada
-- ✨ **MIGRATION_SUMMARY.md** - Resumo da migração
-- ✨ **CHANGES.md** - Este arquivo
+**Código**
+- `src/auth.ts` - Configuração NextAuth v5
+- `src/middleware.ts` - Proteção global de rotas
+- `src/app/api/auth/[...nextauth]/route.ts` - Endpoints OAuth
+- `src/app/login/page.tsx` - Página de login
 
-### Componentes
-- ✨ **src/app/not-found.tsx** - Página 404 Next.js (substituiu React Router)
-- ✨ **src/components/pages/Dashboard.tsx** - Componente principal (movido de src/pages/Index.tsx)
+**Documentação**
+- `AUTH_SETUP.md` - Guia completo de configuração (passo a passo)
+- `TESTING_AUTH.md` - Guia de testes manuais (30+ casos)
+- `QUICKSTART_AUTH.md` - Início rápido (5 minutos)
+- `IMPLEMENTATION_SUMMARY.md` - Resumo técnico completo
 
-## ❌ Arquivos Removidos
+#### Arquivos Modificados
+- `src/app/providers.tsx` - Adicionado SessionProvider
+- `README.md` - Adicionada seção de autenticação
+- `package.json` - Adicionada dependência next-auth
 
-### Vite (incompatível)
-- 🗑️ **index.html** - Entry point HTML do Vite
-- 🗑️ **vite.config.ts** - Configuração Vite
-- 🗑️ **src/main.tsx** - Entry point JS do Vite
-- 🗑️ **src/App.tsx** - Router Vite + React Router
+#### Dependências
+- `next-auth@5.0.0-beta.25` - Framework de autenticação
 
-### React Router (incompatível com Next.js)
-- 🗑️ **src/pages/Index.tsx** - Movido para src/components/pages/Dashboard.tsx
-- 🗑️ **src/pages/NotFound.tsx** - Substituído por src/app/not-found.tsx
+### 🔒 Segurança
 
-## 🏗️ Estrutura Final
+#### Camadas de Proteção
+1. **Hint de domínio no OAuth** - Sugere conta do domínio correto
+2. **Validação no callback** - Bloqueia domínios não autorizados
+3. **Validação no middleware** - Dupla verificação em cada request
+4. **Sessão JWT** - Tokens seguros sem banco de dados
 
-```
-trello-insights/
-├── 📄 README.md                      ✏️ Atualizado
-├── 📄 SETUP.md                       ✨ Novo
-├── 📄 SECURITY_AUDIT.md              ✨ Novo
-├── 📄 MIGRATION_SUMMARY.md           ✨ Novo
-├── 📄 package.json                   ✏️ Atualizado
-├── 📄 next.config.mjs                ✏️ Atualizado
-├── 🔐 .env.local                     🚨 CRIAR (não versionado)
-│
-├── src/
-│   ├── app/                          ✅ Next.js App Router
-│   │   ├── api/
-│   │   │   └── trello/              🔒 API Routes protegidas
-│   │   │       ├── cards/[boardId]/route.ts
-│   │   │       └── actions/[boardId]/route.ts
-│   │   ├── layout.tsx
-│   │   ├── page.tsx                 ✏️ Atualizado
-│   │   ├── not-found.tsx            ✨ Novo
-│   │   └── providers.tsx
-│   │
-│   ├── components/
-│   │   ├── dashboard/               📊 Componentes de dashboard
-│   │   │   ├── charts/
-│   │   │   ├── DashboardHeader.tsx
-│   │   │   └── FilterSidebar.tsx
-│   │   ├── pages/                   ✨ Nova pasta
-│   │   │   └── Dashboard.tsx        ✨ Movido de src/pages/Index.tsx
-│   │   └── ui/                      🎨 shadcn-ui components
-│   │
-│   ├── contexts/
-│   │   └── FilterContext.tsx
-│   │
-│   ├── server/                       🔒 Código server-side
-│   │   └── trello.ts                🔐 Credenciais protegidas aqui
-│   │
-│   ├── services/
-│   │   ├── trelloDataService.ts
-│   │   └── trelloDataTransformer.ts
-│   │
-│   ├── types/
-│   │   └── trello.ts
-│   │
-│   └── data/mocks/                  📦 Dados de fallback
-│       ├── getCards.json
-│       └── getActions.json
-│
-└── public/                           🖼️ Assets estáticos
-```
+#### Rotas Protegidas
+- ✅ `/` - Dashboard principal
+- ✅ `/api/trello/cards/*` - API de cards
+- ✅ `/api/trello/actions/*` - API de actions
+- ✅ Todas as rotas futuras (automático)
 
-## 🔐 Arquitetura de Segurança
+#### Rotas Públicas
+- ✅ `/login` - Página de login
+- ✅ `/api/auth/*` - Endpoints do NextAuth
+- ✅ Assets estáticos (favicon, imagens, etc)
 
-### Fluxo de Dados
+### 📋 Variáveis de Ambiente Necessárias
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                      Browser (Cliente)                        │
-│                                                                │
-│  - src/components/pages/Dashboard.tsx                         │
-│  - src/services/trelloDataService.ts                          │
-│                                                                │
-│  ✅ SEM CREDENCIAIS - apenas chama /api/trello/*             │
-└────────────────────────┬─────────────────────────────────────┘
-                         │
-                         │ fetch('/api/trello/cards/123')
-                         │
-┌────────────────────────▼─────────────────────────────────────┐
-│               Next.js API Routes (Servidor)                   │
-│                                                                │
-│  - src/app/api/trello/cards/[boardId]/route.ts               │
-│  - src/app/api/trello/actions/[boardId]/route.ts             │
-│                                                                │
-│  ✅ Server Components - executa no servidor                  │
-└────────────────────────┬─────────────────────────────────────┘
-                         │
-                         │ getCardsByBoard(boardId)
-                         │
-┌────────────────────────▼─────────────────────────────────────┐
-│            src/server/trello.ts (Server-Only)                 │
-│                                                                │
-│  import 'server-only';  // 🔒 Bloqueia importação no cliente │
-│                                                                │
-│  process.env.TRELLO_API_KEY     // 🔐 Credencial aqui        │
-│  process.env.TRELLO_API_TOKEN   // 🔐 Credencial aqui        │
-│                                                                │
-│  ✅ Cache de 1 hora - otimização                             │
-└────────────────────────┬─────────────────────────────────────┘
-                         │
-                         │ fetch('https://api.trello.com/...')
-                         │
-┌────────────────────────▼─────────────────────────────────────┐
-│                     Trello API Externa                        │
-└──────────────────────────────────────────────────────────────┘
-```
-
-## 🎯 Garantias de Segurança
-
-1. ✅ **Credenciais isoladas** - apenas em `src/server/trello.ts`
-2. ✅ **'server-only'** - importação no cliente causa erro de build
-3. ✅ **Variáveis de ambiente** - nunca commitadas (.gitignore)
-4. ✅ **API Routes protegidas** - todas em `src/app/api/`
-5. ✅ **Cliente não chama Trello** - apenas rotas internas `/api/trello/*`
-
-## 📊 Impacto das Mudanças
-
-| Métrica | Antes (Vite) | Depois (Next.js) |
-|---------|--------------|------------------|
-| Build | ❌ Falhava na Vercel | ✅ Sucesso |
-| Segurança | ⚠️ Credenciais expostas | ✅ Protegidas |
-| Performance | - | ✅ Cache 1h servidor |
-| SEO | ❌ SPA puro | ✅ SSR + SSG |
-| Erros | `prerender error` | ✅ Zero erros |
-
-## ✅ Checklist de Validação
-
-- [x] Build sem erros
-- [x] Sem warnings de configuração
-- [x] Credenciais protegidas
-- [x] 'server-only' implementado
-- [x] API Routes funcionando
-- [x] Página 404 Next.js
-- [x] Estrutura de pastas organizada
-- [x] Documentação completa
-- [x] .gitignore protegendo .env
-- [x] Testes de segurança passando
-
-## 🚀 Deploy
-
-Para fazer deploy na Vercel:
-
-1. Configure variáveis de ambiente no dashboard
-2. Push para o repositório
-3. Vercel fará build automaticamente
-4. ✅ Sucesso!
-
-**Ou via CLI:**
 ```bash
-vercel env add TRELLO_API_KEY
-vercel env add TRELLO_API_TOKEN
-vercel --prod
+# Novas variáveis (obrigatórias)
+AUTH_SECRET=                    # openssl rand -base64 32
+AUTH_GOOGLE_ID=                 # Google Cloud Console
+AUTH_GOOGLE_SECRET=             # Google Cloud Console
+
+# Existentes (já configuradas)
+TRELLO_API_KEY=
+TRELLO_API_TOKEN=
 ```
+
+### 🚀 Como Usar
+
+#### Desenvolvimento
+1. Configure Google Cloud Console (ver `AUTH_SETUP.md`)
+2. Crie arquivo `.env.local` com as variáveis
+3. Execute `npm run dev`
+4. Acesse http://localhost:3000
+5. Faça login com conta @manacacomunicacao.com.br
+
+#### Produção
+1. Configure variáveis de ambiente na plataforma
+2. Adicione URI de callback no Google Cloud Console
+3. Faça deploy normalmente
+
+### 📊 Testes
+
+#### Build
+```bash
+✅ npm run build - Sucesso
+✅ TypeScript - Sem erros
+✅ Lint - Sem erros
+✅ Middleware - Compilado (86.3 kB)
+```
+
+#### Funcionalidades (Requer configuração manual)
+- ⏳ Login com domínio autorizado
+- ⏳ Bloqueio de domínio não autorizado
+- ⏳ Proteção de rotas
+- ⏳ Proteção de APIs
+- ⏳ Persistência de sessão
+
+**Nota**: Testes funcionais dependem da configuração das credenciais do Google Cloud Console. Siga o guia em `TESTING_AUTH.md`.
+
+### 🎯 Próximos Passos
+
+#### Obrigatório (para usar a aplicação)
+1. [ ] Configurar Google Cloud Console
+2. [ ] Criar credenciais OAuth 2.0
+3. [ ] Configurar `.env.local`
+4. [ ] Testar login localmente
+
+#### Opcional (melhorias futuras)
+- [ ] Adicionar botão de logout no header
+- [ ] Exibir nome/avatar do usuário logado
+- [ ] Criar página de "Acesso Negado" customizada
+- [ ] Implementar logs de auditoria
+- [ ] Adicionar rate limiting
+
+### 📚 Documentação
+
+| Documento | Propósito | Tempo de Leitura |
+|-----------|-----------|------------------|
+| `QUICKSTART_AUTH.md` | Início rápido | 5 min |
+| `AUTH_SETUP.md` | Configuração completa | 15 min |
+| `TESTING_AUTH.md` | Guia de testes | 30 min |
+| `IMPLEMENTATION_SUMMARY.md` | Detalhes técnicos | 10 min |
+
+### 🔍 Fluxo de Autenticação
+
+```
+Usuário → Acessa / → Middleware → Não autenticado? → Redireciona /login
+                                  ↓
+                              Autenticado?
+                                  ↓
+                          Domínio válido? → Sim → Acesso liberado
+                                  ↓
+                                 Não
+                                  ↓
+                    Redireciona /login?error=AccessDenied
+```
+
+### 💡 Destaques Técnicos
+
+- **NextAuth v5** (Auth.js) - Versão mais recente e moderna
+- **JWT Strategy** - Sem necessidade de banco de dados
+- **Middleware Edge** - Proteção em nível de infraestrutura
+- **TypeScript** - Totalmente tipado
+- **shadcn/ui** - Interface moderna e acessível
+- **Zero configuração adicional** - Funciona out-of-the-box após configurar credenciais
+
+### ⚠️ Breaking Changes
+
+Nenhum. A autenticação foi adicionada de forma não-invasiva. Código existente continua funcionando.
+
+### 🐛 Bugs Conhecidos
+
+Nenhum.
+
+### 📝 Notas
+
+- A aplicação **requer login** para qualquer acesso
+- Apenas e-mails `@manacacomunicacao.com.br` são autorizados
+- Sessões persistem entre recarregamentos da página
+- Logout automático ao fechar o navegador (comportamento padrão JWT)
 
 ---
 
-**Status:** ✅ PRONTO PARA PRODUÇÃO  
-**Build:** ✅ Testado e funcionando  
-**Segurança:** ✅ Auditado e aprovado
-
+**Versão anterior**: 1.0.0 (sem autenticação)
+**Versão atual**: 1.1.0 (com autenticação Google OAuth)
