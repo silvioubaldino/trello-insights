@@ -10,6 +10,8 @@ import { CounterCard } from "@/components/dashboard/charts/CounterCard";
 import { StackedBarChartCard } from "@/components/dashboard/charts/StackedBarChartCard";
 import { trelloDataService } from "@/services/trelloDataService";
 import { Layers, TrendingUp, Loader2 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 // Board ID fixo - pode ser movido para variável de ambiente posteriormente
 const BOARD_ID = "659436fd99b94b5c7432e98e";
@@ -19,6 +21,7 @@ const DashboardContent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isEnrichingRejections, setIsEnrichingRejections] = useState(false);
+  const [showProjectManagers, setShowProjectManagers] = useState(true);
 
   // Carrega dados da API do Trello ao montar o componente
   useEffect(() => {
@@ -77,6 +80,12 @@ const DashboardContent = () => {
 
   const deliveriesByLabel = trelloDataService.getDeliveriesByLabel(filteredCards);
   const deliveriesByMember = trelloDataService.getDeliveriesByMember(filteredCards);
+  
+  // Filtrar gestores do gráfico "Entregas por Pessoa" se necessário
+  const deliveriesByMemberFiltered = showProjectManagers 
+    ? deliveriesByMember 
+    : deliveriesByMember.filter(d => d.name !== "Adrielly Ubaldino");
+
   const deliveriesByWeek = trelloDataService.getDeliveriesByWeek(filteredCards);
   const avgDaysOpenByMember = trelloDataService.getAverageDaysOpenByMember(filteredCards);
   const rejectionsByMember = trelloDataService.getRejectionsByMember(filteredCards);
@@ -134,26 +143,43 @@ const DashboardContent = () => {
               <PieChartCard
                 title="Entregas por Cliente"
                 data={deliveriesByLabel}
+                description="Volume de cards entregues no período, agrupados por etiqueta (label) do Trello."
               />
               
               <BarChartCard
                 title="Entregas por Pessoa"
-                data={deliveriesByMember}
+                data={deliveriesByMemberFiltered}
+                description="Quantidade de cards entregues no período onde o membro participou da entrega."
+                action={
+                  <div className="flex items-center space-x-2">
+                    <Checkbox 
+                      id="show-managers" 
+                      checked={showProjectManagers}
+                      onCheckedChange={(checked) => setShowProjectManagers(checked as boolean)}
+                    />
+                    <Label htmlFor="show-managers" className="text-sm font-normal cursor-pointer">
+                      Incluir gestores do projeto
+                    </Label>
+                  </div>
+                }
               />
               
               <LineChartCard
                 title="Entregas por Semana"
                 data={deliveriesByWeek}
+                description="Quantidade de cards entregues agrupados por semana do ano."
               />
               
               <BarChartCard
                 title="Média de Dias em Aberto por Membro"
                 data={avgDaysOpenByMember}
+                description="Tempo médio (em dias) desde a criação até a entrega dos cards de cada membro."
               />
               
-              <StackedBarChartCard
+              {/* <StackedBarChartCard
                 title="Rejeições por Membro"
                 data={rejectionsByMember}
+                description="Comparativo de rejeições internas (time) e externas (cliente) por membro."
                 bars={[
                   {
                     dataKey: "Rejeições Internas",
@@ -166,7 +192,7 @@ const DashboardContent = () => {
                     name: "Rejeições do Cliente"
                   }
                 ]}
-              />
+              /> */}
             </div>
             </div>
           )}

@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import { ChartData } from "@/types/trello";
+import { ChartInfoTooltip } from "../ChartInfoTooltip";
 
 interface PieChartCardProps {
   title: string;
   data: ChartData[];
+  description?: string;
 }
 
 const COLORS = [
@@ -15,11 +17,14 @@ const COLORS = [
   "hsl(var(--chart-5))",
 ];
 
-export const PieChartCard = ({ title, data }: PieChartCardProps) => {
+export const PieChartCard = ({ title, data, description }: PieChartCardProps) => {
   return (
     <Card className="shadow-lg">
-      <CardHeader>
-        <CardTitle className="text-lg">{title}</CardTitle>
+      <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-lg font-medium">{title}</CardTitle>
+          {description && <ChartInfoTooltip content={description} />}
+        </div>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>

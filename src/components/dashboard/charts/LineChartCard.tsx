@@ -1,17 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { ChartData } from "@/types/trello";
+import { ChartInfoTooltip } from "../ChartInfoTooltip";
 
 interface LineChartCardProps {
   title: string;
   data: ChartData[];
+  description?: string;
 }
 
-export const LineChartCard = ({ title, data }: LineChartCardProps) => {
+export const LineChartCard = ({ title, data, description }: LineChartCardProps) => {
   return (
     <Card className="shadow-lg">
-      <CardHeader>
-        <CardTitle className="text-lg">{title}</CardTitle>
+      <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-lg font-medium">{title}</CardTitle>
+          {description && <ChartInfoTooltip content={description} />}
+        </div>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>

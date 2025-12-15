@@ -257,12 +257,30 @@ class TrelloDataService {
   /**
    * Calcula entregas agrupadas por membro
    * Ordenado do maior para o menor
+   * Considera todos os membros participantes do card
    */
   getDeliveriesByMember(cards: TrelloCardLegacy[]): ChartData[] {
     const memberCounts: Record<string, number> = {};
 
+    // Mapa para lookup rápido dos dados completos (incluindo array de members)
+    const transformedMap = new Map<string, TrelloCard>();
+    this.transformedCards.forEach(card => {
+      transformedMap.set(card.id, card);
+    });
+
     cards.forEach((card) => {
-      memberCounts[card.member] = (memberCounts[card.member] || 0) + 1;
+      const transformedCard = transformedMap.get(card.id);
+      
+      // Se tiver o card original com lista completa de membros
+      if (transformedCard && transformedCard.members.length > 0) {
+        transformedCard.members.forEach(member => {
+          memberCounts[member] = (memberCounts[member] || 0) + 1;
+        });
+      } else {
+        // Fallback para o membro legado (único) ou "Sem responsável"
+        const memberName = card.member;
+        memberCounts[memberName] = (memberCounts[memberName] || 0) + 1;
+      }
     });
 
     return Object.entries(memberCounts)
